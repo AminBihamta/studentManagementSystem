@@ -1,0 +1,7 @@
+sampleMatricNum
+20020713
+Iranian
+samplePassNum
+2
+SampleAAName
+4.00

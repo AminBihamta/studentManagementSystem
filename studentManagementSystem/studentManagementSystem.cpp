@@ -3,20 +3,95 @@
 #include <string>
 #include "Classes.cpp"
 using namespace std;
-int objectNum = 0;  
+int studentCount = 0;  
+int aaCount = 0;
+int courseCount = 0;
 
-void findNumOfRecords() {
+
+void findAACount() {
+    ifstream inputFile("aa.txt");
+    if (inputFile.is_open()) {
+        string tempString;
+        while (inputFile >> tempString) {
+            aaCount++;
+        }
+        inputFile.close();
+        aaCount /= 3;
+    }
+    else {
+        cout << "Unable to open academic advisors database." << endl;
+    }
+}
+
+void readAA(AA academicAdvisors[]) {
+
+    ifstream inputFile2("aa.txt");
+    if (inputFile2.is_open()) {
+        int i = 0;
+        string name, email, phoneNum;
+
+        for (int i = 0; i < aaCount; i++)
+        {
+
+            getline(inputFile2 >> ws, name);
+            inputFile2 >> email >> phoneNum;
+
+           academicAdvisors[i].setName(name);
+           academicAdvisors[i].setEmail(email);
+           academicAdvisors[i].setPhoneNum(phoneNum);
+
+        }
+        inputFile2.close();
+    }
+}
+
+void findCourseCount() {
+    ifstream inputFile("courses.txt");
+    if (inputFile.is_open()) {
+        string tempString;
+        while (inputFile >> tempString) {
+            courseCount++;
+        }
+        inputFile.close();
+        courseCount /= 2;
+    }
+    else {
+        cout << "Unable to open courses database." << endl;
+    }
+}
+
+void readCourses(Course courses[]) {
+    ifstream inputFile2("courses.txt");
+    if (inputFile2.is_open()) {
+        int i = 0;
+        string name, code;
+
+        for (int i = 0; i < aaCount; i++)
+        {
+
+            getline(inputFile2 >> ws, name);
+            inputFile2 >> code;
+
+            courses[i].setCourseName(name);
+            courses[i].setCourseCode(code);
+
+        }
+        inputFile2.close();
+    }
+}
+
+void findStudentCount() {
     ifstream inputFile("students.txt");
     if (inputFile.is_open()) {
         string tempString;
         while (inputFile >> tempString) {
-            objectNum++;
+            studentCount++;
         }
         inputFile.close();
-        objectNum /= 10;
+        studentCount /= 10;
     }
     else {
-        cout << "Unable to open file." << endl;
+        cout << "Unable to open students database." << endl;
     }
 }
 
@@ -33,7 +108,7 @@ void readStudent(Student students[]) {
         int semester;
         string AA;
         float CGPA;
-        for (int i = 0; i < objectNum; i++)
+        for (int i = 0; i < studentCount; i++)
         {
 
             getline(inputFile2 >> ws, name);
@@ -56,10 +131,15 @@ void readStudent(Student students[]) {
 
 int main()
 {
-    findNumOfRecords();
-    Student* students = new Student[objectNum];
+    findAACount();
+    findStudentCount();
+    findCourseCount();
+
+    AA* academicAdvisors = new AA[aaCount];
+    Student* students = new Student[studentCount];
+    Course* courses = new Course[courseCount];
+   
+    readAA(academicAdvisors);
     readStudent(students);
-
-    cout << students[1].getName();
-
+    readCourses(courses);
 }

@@ -23,6 +23,10 @@ public:
     }
 };
 
+class AA : public Person {
+
+};
+
 class Student : public Person {
 private:
     string matricNum;
@@ -30,7 +34,7 @@ private:
     string nationality;
     string passNum;
     int semester;
-    string AA;
+    string academicAdvisor;
     float CGPA;
 
 public:
@@ -90,10 +94,10 @@ public:
 
     // Getter and Setter for AA
     string getAA() const {
-        return AA;
+        return academicAdvisor;
     }
     void setAA(const string& AA) {
-        this->AA = AA;
+        this->academicAdvisor = AA;
     }
 
     // Getter and Setter for CGPA
@@ -105,3 +109,27 @@ public:
     }
 
 };
+
+class Course {
+private:
+    string courseName, courseCode;
+public:
+
+    Course(string _courseName = "", string _courseCode = "") {
+        courseName = _courseName;
+        courseCode = _courseCode;
+    }
+
+    void setCourseName(string _courseName) {
+        courseName = _courseName;
+    }
+
+    void setCourseCode(string _courseCode) {
+        courseCode = _courseCode;
+    }
+
+    string getCourseName() { return courseName; }
+    string getCourseCode() { return courseCode; }
+};
+
+

@@ -1,3 +1,5 @@
-AAName1
-sampleAAEmail
-sampleAAPhoneNum
+firstCourse
+SECI1143
+
+firstCourse
+SECI1143

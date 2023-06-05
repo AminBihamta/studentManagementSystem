@@ -263,12 +263,55 @@ void addAcademicAdvisor(AA aas[]) {
     outputFile2.close();
 }
 
+void addCourse(Course courses[]) {
+
+    string tempString;
+
+    cout << "Enter course name: ";
+    cin.ignore();
+    getline(cin, tempString);
+    courses[studentCount + 1].setCourseName(tempString);
+
+    cout << "Enter course code: ";
+    cin >> tempString;
+    courses[studentCount + 1].setCourseCode(tempString);
+
+    ifstream inputFile("courses.txt");
+    ofstream outputFile("tempText.txt");
+
+    string line;
+    while (getline(inputFile, line)) {
+        outputFile << line << endl;
+    }
+
+    inputFile.close();
+    outputFile.close();
+
+    ifstream inputFile2("tempText.txt");
+    ofstream outputFile2("courses.txt");
+
+    while (getline(inputFile2, line)) {
+        outputFile2 << line << endl;
+    }
+
+    outputFile2 << endl;
+    outputFile2 << courses[studentCount + 1].getCourseName() << endl;
+    outputFile2 << courses[studentCount + 1].getCourseCode() << endl;
+
+    inputFile2.close();
+    outputFile2.close();
+}
+
+
 void addRecord(int choice, Student students[], AA aas[], Course courses[]) {
     if (choice == 1) {
         addStudent(students);
     }
     else if (choice == 2) {
         addAcademicAdvisor(aas);
+    }
+    else {
+        addCourse(courses);
     }
 }
 

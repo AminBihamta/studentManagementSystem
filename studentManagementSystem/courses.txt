@@ -3,3 +3,6 @@ SECI1143
 
 firstCourse
 SECI1143
+
+testcOURSE
+SECI1134

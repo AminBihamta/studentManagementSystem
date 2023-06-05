@@ -30,3 +30,7 @@ samplePassNum
 2
 SampleAAName
 4.00
+
+testAA
+testAA
+testAA

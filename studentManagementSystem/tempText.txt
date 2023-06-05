@@ -1,7 +1,3 @@
 AAName1
 sampleAAEmail
 sampleAAPhoneNum
-
-testAA
-testAA
-testAA

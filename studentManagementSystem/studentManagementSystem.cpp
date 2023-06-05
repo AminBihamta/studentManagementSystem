@@ -136,6 +136,8 @@ int actorSelector() {
     cout << "1. Student Record" << endl;
     cout << "2. Academic Advisor Record" << endl;
     cout << "3. Course Record" << endl;
+    cout << endl << "Your response: ";
+
 
     cin >> choice;
     return choice;
@@ -265,6 +267,7 @@ void addAcademicAdvisor(AA aas[]) {
 
 void addCourse(Course courses[]) {
 
+
     string tempString;
 
     cout << "Enter course name: ";
@@ -302,15 +305,32 @@ void addCourse(Course courses[]) {
     outputFile2.close();
 }
 
+void printSMS() {
+    system("cls");
+    cout << R"(
+ ________  _____ ______   ________         
+|\   ____\|\   _ \  _   \|\   ____\        
+\ \  \___|\ \  \\\__\ \  \ \  \___|_       
+ \ \_____  \ \  \\|__| \  \ \_____  \      
+  \|____|\  \ \  \    \ \  \|____|\  \     
+    ____\_\  \ \__\    \ \__\____\_\  \    
+   |\_________\|__|     \|__|\_________\   
+   \|_________|             \|_________|   
+
+)" << endl;
+}
 
 void addRecord(int choice, Student students[], AA aas[], Course courses[]) {
     if (choice == 1) {
+        printSMS();
         addStudent(students);
     }
     else if (choice == 2) {
+        printSMS();
         addAcademicAdvisor(aas);
     }
     else {
+        printSMS();
         addCourse(courses);
     }
 }
@@ -328,8 +348,11 @@ void tempShowStudent(Student student) {
     cout << student.getCGPA() << endl;
 }
 
+
 int main()
 {
+    printSMS();
+
     int choice = 0;
     findAACount();
     findStudentCount();
@@ -349,10 +372,9 @@ int main()
     cout << "2. Update Record" << endl;
     cout << "3. Create a record" << endl;
     cout << "4. Delete a record" << endl;
+    cout << endl << "Your response: ";
 
     cin >> choice;
-
-
 
     if (choice == 1) {
     }
@@ -360,6 +382,7 @@ int main()
         
     }
     else if (choice == 3) {
+        printSMS();
         int tempChoice = actorSelector();
         addRecord(tempChoice, students, academicAdvisors, courses);
     }

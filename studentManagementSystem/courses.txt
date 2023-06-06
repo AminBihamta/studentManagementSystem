@@ -1,8 +1,5 @@
-firstCourse
-SECI1143
+courseName1
+courseCode1
 
-firstCourse
-SECI1143
-
-testcOURSE
-SECI1134
+courseName2
+courseCode2

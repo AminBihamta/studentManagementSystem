@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "Classes.cpp"
+#include <iomanip>
 using namespace std;
 int maxCount = 100;
 int studentCount = 0;  
@@ -13,14 +14,16 @@ void findAACount() {
     ifstream inputFile("aa.txt");
     if (inputFile.is_open()) {
         string tempString;
-        while (inputFile >> tempString) {
-            aaCount++;
+        int lineCount = 0;
+        while (getline(inputFile, tempString)) {
+            lineCount++;
         }
+        lineCount++;
         inputFile.close();
-        aaCount /= 3;
+        aaCount = lineCount / 4;
     }
     else {
-        cout << "Unable to open academic advisors database." << endl;
+        cout << "Unable to open courses database." << endl;
     }
 }
 
@@ -50,11 +53,13 @@ void findCourseCount() {
     ifstream inputFile("courses.txt");
     if (inputFile.is_open()) {
         string tempString;
-        while (inputFile >> tempString) {
-            courseCount++;
+        int lineCount = 0;
+        while (getline(inputFile, tempString)) {
+            lineCount++;
         }
+        lineCount++;
         inputFile.close();
-        courseCount /= 2;
+        courseCount = lineCount / 3;
     }
     else {
         cout << "Unable to open courses database." << endl;
@@ -85,14 +90,16 @@ void findStudentCount() {
     ifstream inputFile("students.txt");
     if (inputFile.is_open()) {
         string tempString;
-        while (inputFile >> tempString) {
-            studentCount++;
+        int lineCount = 0;
+        while (getline(inputFile, tempString)) {
+            lineCount++;
         }
+        lineCount++;
         inputFile.close();
-        studentCount /= 10;
+        studentCount = lineCount / 11;
     }
     else {
-        cout << "Unable to open students database." << endl;
+        cout << "Unable to open courses database." << endl;
     }
 }
 
@@ -132,10 +139,15 @@ void readStudent(Student students[]) {
 
 int actorSelector() {
     int choice = 0;
+
+    cout << "========={ Menu }=========" << endl << endl;
     cout << "Choose an option" << endl;
     cout << "1. Student Record" << endl;
     cout << "2. Academic Advisor Record" << endl;
     cout << "3. Course Record" << endl;
+
+    cout << endl << "========={ Menu }=========" << endl;
+
     cout << endl << "Your response: ";
 
 
@@ -335,17 +347,41 @@ void addRecord(int choice, Student students[], AA aas[], Course courses[]) {
     }
 }
 
-void tempShowStudent(Student student) {
-    cout << student.getName() << endl;
-    cout << student.getEmail() << endl;
-    cout << student.getPhoneNum() << endl;
-    cout << student.getMatricNum() << endl;
-    cout << student.getDateOfBirth() << endl;
-    cout << student.getNationality() << endl;
-    cout << student.getPassNum() << endl;
-    cout << student.getSemester() << endl;
-    cout << student.getAA() << endl;
-    cout << student.getCGPA() << endl;
+void printRecord(int choice, Student students[], AA aas[], Course courses[]) {
+    printSMS();
+    if (choice == 1) {
+        for (int i = 0; i < studentCount; i++) {
+            cout << "Student " << i + 1 << ":\n";
+            cout << "Name: " << students[i].getName() << endl;
+            cout << "Email: " << students[i].getEmail() << endl;
+            cout << "Phone Number: " << students[i].getPhoneNum() << endl;
+            cout << "Matriculation Number: " << students[i].getMatricNum() << endl;
+            cout << "Date of Birth: " << students[i].getDateOfBirth() << endl;
+            cout << "Nationality: " << students[i].getNationality() << endl;
+            cout << "Passport Number: " << students[i].getPassNum() << endl;
+            cout << "Semester: " << students[i].getSemester() << endl;
+            cout << "Academic Advisor: " << students[i].getAA() << endl;
+            cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl;
+            cout << endl;
+        }
+    }
+    else if (choice == 2) {
+        for (int i = 0; i < aaCount; i++) {
+            cout << "Academic Advisor " << i + 1 << ":\n";
+            cout << "Name: " << aas[i].getName() << endl;
+            cout << "Email: " << aas[i].getEmail() << endl;
+            cout << endl << endl;
+        }
+    }
+    else {
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << "Course " << i + 1 << ":\n";
+            cout << "Name: " << courses[i].getCourseName() << endl;
+            cout << "code: " << courses[i].getCourseCode() << endl;
+            cout << endl;
+        }
+    }
 }
 
 
@@ -366,17 +402,22 @@ int main()
     readStudent(students);
     readCourses(courses);
     cout << "Total Number of Students | " << studentCount << "\tTotal Number of Academic Advisors | " << aaCount << "\tTotal Number of Courses | " << courseCount << endl << endl;
-   
+    cout << "======{ Menu }======" << endl << endl;
     cout << "Choose an option" << endl;
     cout << "1. View All Records" << endl;
     cout << "2. Update Record" << endl;
     cout << "3. Create a record" << endl;
     cout << "4. Delete a record" << endl;
+    cout << endl << "======{ Menu }======" << endl;
+
     cout << endl << "Your response: ";
 
     cin >> choice;
 
     if (choice == 1) {
+        printSMS();
+        int tempChoice = actorSelector();
+        printRecord(tempChoice, students, academicAdvisors, courses);
     }
     else if (choice == 2) {
         
@@ -389,6 +430,12 @@ int main()
     else {
     }
 
-    tempShowStudent(students[studentCount + 1]);
+    cout << "Would you like to exit the program?" << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl;
+    cout << endl << "Your response: ";
 
+    cin >> choice;
+    if (choice != 1)
+        main();
 }

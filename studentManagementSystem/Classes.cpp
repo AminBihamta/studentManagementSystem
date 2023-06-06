@@ -131,5 +131,3 @@ public:
     string getCourseName() { return courseName; }
     string getCourseCode() { return courseCode; }
 };
-
-

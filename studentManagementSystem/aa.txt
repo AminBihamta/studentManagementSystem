@@ -1,4 +1,4 @@
-AAName1
+Amin
 sampleAAEmail
 sampleAAPhoneNum
 
@@ -6,6 +6,3 @@ testAA
 testAA
 testAA
 
-tempAA
-tempAA
-tempAA

@@ -404,7 +404,32 @@ void printRecord(Student student) {
 
 }
 
-int findStudent(Student students[]) {
+
+void printRecord(AA aa) {
+    system("cls");
+    printSMS();
+    cout << "========== { Student } ==========" << endl << endl;
+    cout << "Name: " << aa.getName() << endl;
+    cout << "Email: " << aa.getEmail() << endl;
+    cout << "Phone Number: " << aa.getPhoneNum() << endl;
+    cout << endl;
+    cout << "========== { Student } ==========" << endl << endl;
+
+}
+
+void printRecord(Course course) {
+    system("cls");
+    printSMS();
+    cout << "========== { Student } ==========" << endl << endl;
+    cout << "Course name: " << course.getCourseName() << endl;
+    cout << "Course code: " << course.getCourseCode() << endl;
+    cout << endl;
+    cout << "========== { Student } ==========" << endl << endl;
+
+}
+
+
+int findRecord(Student students[]) {
     system("cls");
     printSMS();
     cout << R"(================ { Menue } ================
@@ -433,12 +458,139 @@ What identifier would you like to provide?
         }
     }
     else if (choice == 2) {
-
+        cout << endl << "Enter student passport / IC number: ";
+        string _pass;
+        cin.ignore();
+        getline(cin, _pass);
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (students[i].getPassNum() == _pass) {
+                return i;
+            }
+        }
     }
+    else if (choice == 3) {
+        cout << endl << "Enter student matriculation number: ";
+        string _matric;
+        cin.ignore();
+        getline(cin, _matric);
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (students[i].getMatricNum() == _matric) {
+                return i;
+            }
+        }
+    }
+    else if (choice == 4) {
+        cout << endl << "Enter student email address: ";
+        string _email;
+        cin.ignore();
+        getline(cin, _email);
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (students[i].getEmail() == _email) {
+                return i;
+            }
+        }
+    } 
 
 }
 
-Student updateStudent(Student student) {
+int findRecord(AA aas[]) {
+    system("cls");
+    printSMS();
+    cout << R"(================ { Menue } ================
+
+What identifier would you like to provide?
+1. Name
+2. Email
+3. Phone number
+
+================ { Menue } ================)";
+
+    int choice;
+    cin >> choice;
+
+    if (choice == 1) {
+        cout << endl << "Enter academic advisor's name: ";
+        string _name;
+        cin.ignore();
+        getline(cin, _name);
+        for (int i = 0; i < aaCount; i++)
+        {
+            if (aas[i].getName() == _name) {
+                return i;
+            }
+        }
+    }
+    else if (choice == 2) {
+        cout << endl << "Enter academic advisor's email address: ";
+        string _email;
+        cin.ignore();
+        getline(cin, _email);
+        for (int i = 0; i < aaCount; i++)
+        {
+            if (aas[i].getEmail() == _email) {
+                return i;
+            }
+        }
+    }
+    else if (choice == 3) {
+        cout << endl << "Enter academic advisor's phone number: ";
+        string _phone;
+        cin.ignore();
+        getline(cin, _phone);
+        for (int i = 0; i < aaCount; i++)
+        {
+            if (aas[i].getPhoneNum() == _phone) {
+                return i;
+            }
+        }
+    }
+}
+
+int findRecord(Course courses[]) {
+    system("cls");
+    printSMS();
+    cout << R"(================ { Menue } ================
+
+What identifier would you like to provide?
+1. Course name
+2. Course code
+
+================ { Menue } ================)";
+
+    int choice;
+    cin >> choice;
+
+    if (choice == 1) {
+        cout << endl << "Enter course name: ";
+        string _name;
+        cin.ignore();
+        getline(cin, _name);
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (courses[i].getCourseName() == _name) {
+                return i;
+            }
+        }
+    }
+    else if (choice == 2) {
+        cout << endl << "Enter course code: ";
+        string _code;
+        cin.ignore();
+        getline(cin, _code);
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (courses[i].getCourseCode() == _code) {
+                return i;
+            }
+        }
+    }
+}
+
+
+Student updateRecord(Student student) {
     int choice = 0;
     cout << R"(================= { Menu } =================
 
@@ -520,6 +672,80 @@ Your response: )";
     return student;
 }
 
+AA updateRecord(AA aa) {
+    int choice = 0;
+    cout << R"(================= { Menu } =================
+
+Which information would you like to update?
+1. Name
+2. Email
+3. Phone Number
+
+================= { Menu } =================
+
+Your response: )";
+
+    cin >> choice;
+    string tempInput;
+
+    switch (choice) {
+    case 1:
+        cout << "Enter name: ";
+        cin.ignore();
+        getline(cin, tempInput);
+        aa.setName(tempInput);
+        break;
+    case 2:
+        cout << "Enter email: ";
+        cin >> tempInput;
+        aa.setEmail(tempInput);
+        break;
+    case 3:
+        cout << "Enter phone number: ";
+        cin >> tempInput;
+        aa.setPhoneNum(tempInput);
+    default:
+        cout << "Invalid choice." << endl;
+        break;
+    }
+    return aa;
+}
+
+Course updateRecord(Course course) {
+    int choice = 0;
+    cout << R"(================= { Menu } =================
+
+Which information would you like to update?
+1. Course name
+2. Course code
+
+================= { Menu } =================
+
+Your response: )";
+
+    cin >> choice;
+    string tempInput;
+
+    switch (choice) {
+    case 1:
+        cout << "Enter course name: ";
+        cin.ignore();
+        getline(cin, tempInput);
+        course.setCourseName(tempInput);
+        break;
+    case 2:
+        cout << "Enter course code: ";
+        cin >> tempInput;
+        course.setCourseCode(tempInput);
+        break;
+    default:
+        cout << "Invalid choice." << endl;
+        break;
+    }
+    return course;
+}
+
+
 void updateDatabase(Student students[]) {
     ofstream outputFile("students.txt");
 
@@ -538,6 +764,30 @@ void updateDatabase(Student students[]) {
         outputFile << endl;
     }
 }
+
+void updateDatabase(AA aas[]) {
+    ofstream outputFile("aa.txt");
+
+    for (int i = 0; i < courseCount; i++)
+    {
+        outputFile << aas[i].getName() << endl;
+        outputFile << aas[i].getEmail() << endl;
+        outputFile << aas[i].getPhoneNum() << endl;
+        outputFile << endl;
+    }
+}
+
+void updateDatabase(Course courses[]) {
+    ofstream outputFile("courses.txt");
+
+    for (int i = 0; i < courseCount; i++)
+    {
+        outputFile << courses[i].getCourseName() << endl;
+        outputFile << courses[i].getCourseCode() << endl;
+        outputFile << endl;
+    }
+}
+
 
 int main()
 {
@@ -576,10 +826,24 @@ int main()
     else if (choice == 2) {
         printSMS();
         int tempChoice = actorSelector();
-        currentRecord = findStudent(students);
-        printRecord(students[currentRecord]);
-        students[currentRecord] = updateStudent(students[currentRecord]);
-        updateDatabase(students);
+        if (choice == 1) {
+            currentRecord = findRecord(students);
+            printRecord(students[currentRecord]);
+            students[currentRecord] = updateRecord(students[currentRecord]);
+            updateDatabase(students);
+        }
+        else if (choice == 2) {
+            currentRecord = findRecord(academicAdvisors);
+            printRecord(academicAdvisors[currentRecord]);
+            academicAdvisors[currentRecord] = updateRecord(academicAdvisors[currentRecord]);
+            updateDatabase(academicAdvisors);
+        }
+        else if (choice == 3) {
+            currentRecord = findRecord(courses);
+            printRecord(courses[currentRecord]);
+            courses[currentRecord] = updateRecord(courses[currentRecord]);
+            updateDatabase(courses);
+        }
     }
     else if (choice == 3) {
         printSMS();

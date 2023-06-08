@@ -8,6 +8,7 @@ int maxCount = 100;
 int studentCount = 0;  
 int aaCount = 0;
 int courseCount = 0;
+int currentRecord = 0;
 
 
 void findAACount() {
@@ -384,6 +385,159 @@ void printRecord(int choice, Student students[], AA aas[], Course courses[]) {
     }
 }
 
+void printRecord(Student student) {
+    system("cls");
+    printSMS();
+    cout << "========== { Student } ==========" << endl << endl;
+    cout << "Name: " << student.getName() << endl;
+    cout << "Email: " << student.getEmail() << endl;
+    cout << "Phone Number: " << student.getPhoneNum() << endl;
+    cout << "Matriculation Number: " << student.getMatricNum() << endl;
+    cout << "Date of Birth: " << student.getDateOfBirth() << endl;
+    cout << "Nationality: " << student.getNationality() << endl;
+    cout << "Passport Number: " << student.getPassNum() << endl;
+    cout << "Semester: " << student.getSemester() << endl;
+    cout << "Academic Advisor: " << student.getAA() << endl;
+    cout << fixed << setprecision(2) << "CGPA: " << student.getCGPA() << endl;
+    cout << endl;
+    cout << "========== { Student } ==========" << endl << endl;
+
+}
+
+int findStudent(Student students[]) {
+    system("cls");
+    printSMS();
+    cout << R"(================ { Menue } ================
+
+What identifier would you like to provide?
+1. Name
+2. Passport / IC number
+3. Matric number
+4. Email
+
+================ { Menue } ================)";
+
+    int choice;
+    cin >> choice;
+    
+    if (choice == 1) {
+        cout << endl << "Enter student name: ";
+        string _name;
+        cin.ignore();
+        getline(cin, _name);
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (students[i].getName() == _name) {
+                return i;
+            }
+        }
+    }
+    else if (choice == 2) {
+
+    }
+
+}
+
+Student updateStudent(Student student) {
+    int choice = 0;
+    cout << R"(================= { Menu } =================
+
+Which information would you like to update?
+1. Name
+2. Email
+3. Phone Number
+4. Matriculation Number
+5. Date of Birth
+6. Nationality
+7. Passport Number
+8. Semester
+9. Academic Advisor
+10. CGPA
+
+================= { Menu } =================
+
+Your response: )";
+
+    cin >> choice;
+    string tempInput;
+
+    switch (choice) {
+    case 1:
+        cout << "Enter name: ";
+        cin.ignore();
+        getline(cin, tempInput);
+        student.setName(tempInput);
+        break;
+    case 2:
+        cout << "Enter email: ";
+        cin >> tempInput;
+        student.setEmail(tempInput);
+        break;
+    case 3:
+        cout << "Enter phone number: ";
+        cin >> tempInput;
+        student.setPhoneNum(tempInput);
+    case 4:
+        cout << "Enter matric number: ";
+        cin >> tempInput;
+        student.setMatricNum(tempInput);
+        break;
+    case 5:
+        cout << "Enter date of birth (YYYYMMDD): ";
+        cin >> tempInput;
+        student.setDateOfBirth(stoi(tempInput));
+        break;
+    case 6:
+        cout << "Enter nationality: ";
+        cin >> tempInput;
+        student.setNationality(tempInput);
+        break;
+    case 7:
+        cout << "Enter passport number: ";
+        cin >> tempInput;
+        student.setPassNum(tempInput);
+        break;
+    case 8:
+        cout << "Enter semester: ";
+        cin >> tempInput;
+        student.setSemester(stoi(tempInput));
+        break;
+    case 9:
+        cout << "Enter academic advisor: ";
+        cin >> tempInput;
+        student.setAA(tempInput);
+        break;
+    case 10:
+        cout << "Enter CGPA: ";
+        cin >> tempInput;
+        student.setCGPA(stof(tempInput));
+        break;
+    default:
+        cout << "Invalid choice." << endl;
+        break;
+    }
+
+    return student;
+}
+
+void updateDatabase(Student students[]) {
+    ofstream outputFile("students.txt");
+
+    for (int i = 0; i < studentCount; i++)
+    {
+        outputFile << students[i].getName() << endl;
+        outputFile << students[i].getEmail() << endl;
+        outputFile << students[i].getPhoneNum() << endl;
+        outputFile << students[i].getMatricNum() << endl;
+        outputFile << students[i].getDateOfBirth() << endl;
+        outputFile << students[i].getNationality() << endl;
+        outputFile << students[i].getPassNum() << endl;
+        outputFile << students[i].getSemester() << endl;
+        outputFile << students[i].getAA() << endl;
+        outputFile << students[i].getCGPA() << endl;
+        outputFile << endl;
+    }
+}
 
 int main()
 {
@@ -420,7 +574,12 @@ int main()
         printRecord(tempChoice, students, academicAdvisors, courses);
     }
     else if (choice == 2) {
-        
+        printSMS();
+        int tempChoice = actorSelector();
+        currentRecord = findStudent(students);
+        printRecord(students[currentRecord]);
+        students[currentRecord] = updateStudent(students[currentRecord]);
+        updateDatabase(students);
     }
     else if (choice == 3) {
         printSMS();

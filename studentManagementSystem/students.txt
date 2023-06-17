@@ -1,11 +1,11 @@
-Mohammad Amin Bihamta Toosi 1
-aminbihamtawork@gmail.com
+Mohammad Amin Bihamta Toosi
+bihamta@graduate.utm.my
 +6018242591
-matricNumPP
+A22Mj4004
 20020713
 Iranian
 samplePassNum
-3
+2
 SampleAAName
 Course1
 CourseCode1

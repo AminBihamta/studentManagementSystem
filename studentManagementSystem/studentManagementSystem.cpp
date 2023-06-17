@@ -91,8 +91,6 @@ void readCourses(Course courses[]) {
     }
 }
 
-// Same
-
 void findStudentCount() {
     ifstream inputFile("students.txt");
     if (inputFile.is_open()) {
@@ -531,7 +529,6 @@ void printRecord(Course course) {
     std::cout << "========== { Student } ==========" << endl << endl;
 
 }
-
 
 int findRecord(Student students[]) {
     system("cls");

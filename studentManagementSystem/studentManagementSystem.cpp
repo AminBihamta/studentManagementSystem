@@ -1,7 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "Classes.cpp"
+#include "Person.h"
+#include "AA.h"
+#include "Student.h"
+#include "Course.h"
+
 #include <iomanip>
 using namespace std;
 int maxCount = 100;

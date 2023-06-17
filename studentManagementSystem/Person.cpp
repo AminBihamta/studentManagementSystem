@@ -1,6 +1,6 @@
 #include "person.h"
+using namespace std;
 
-// Getters
 std::string Person::getName() const {
     return name;
 }
@@ -13,7 +13,6 @@ std::string Person::getPhoneNum() const {
     return phoneNum;
 }
 
-// Setters
 void Person::setName(const std::string& _name) {
     name = _name;
 }
@@ -26,7 +25,6 @@ void Person::setPhoneNum(const std::string& _phoneNum) {
     phoneNum = _phoneNum;
 }
 
-// Constructor
 Person::Person(const std::string& _name, const std::string& _email, const std::string& _phoneNum) {
     name = _name;
     email = _email;

@@ -3,22 +3,24 @@
 
 #include <string>
 
+using namespace std;
+
 class Person {
 private:
-    std::string name;
-    std::string email;
-    std::string phoneNum;
+    string name;
+    string email;
+    string phoneNum;
 
 public:
-    Person(const std::string& _name = "", const std::string& _email = "", const std::string& _phoneNum = "");
+    Person(const string& _name = "", const string& _email = "", const string& _phoneNum = "");
 
-    std::string getName() const;
-    std::string getEmail() const;
-    std::string getPhoneNum() const;
+    string getName() const;
+    string getEmail() const;
+    string getPhoneNum() const;
 
-    void setName(const std::string& _name);
-    void setEmail(const std::string& _email);
-    void setPhoneNum(const std::string& _phoneNum);
+    void setName(const string& _name);
+    void setEmail(const string& _email);
+    void setPhoneNum(const string& _phoneNum);
 
 };
 

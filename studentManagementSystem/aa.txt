@@ -1,4 +1,4 @@
-Amin
+SampleAAName
 sampleAAEmail
 sampleAAPhoneNum
 

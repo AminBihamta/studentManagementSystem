@@ -3,13 +3,13 @@
 
 #include "person.h"
 
+using namespace std;
+
 class AA : public Person {
 public:
-    // Default constructor
     AA();
 
-    // Constructor with parameters
-    AA(const std::string& name, const std::string& email, const std::string& phoneNum);
+    AA(const string& name, const string& email, const string& phoneNum);
 };
 
-#endif  // AA_H
+#endif

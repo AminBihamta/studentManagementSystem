@@ -50,9 +50,6 @@ float Student::getCGPA() const {
     return CGPA;
 }
 
-std::string Student::getAAName() const {
-    return academicAdvisor.getName();
-}
 
 void Student::setMatricNum(const std::string& matricNum) {
     this->matricNum = matricNum;
@@ -77,4 +74,57 @@ void Student::setSemester(int semester) {
 
 void Student::setCGPA(float CGPA) {
     this->CGPA = CGPA;
+}
+
+std::string Student::getAAName() const {
+    return academicAdvisor.getName();
+}
+
+std::string Student::getCourse1Name() const {
+    return studentCourses[0].getCourseName();
+}
+
+std::string Student::getCourse2Name() const {
+    return studentCourses[1].getCourseName();
+}
+
+std::string Student::getCourse3Name() const {
+    return studentCourses[2].getCourseName();
+}
+
+std::string Student::getCourse4Name() const {
+    return studentCourses[3].getCourseName();
+}
+
+std::string Student::getCourse5Name() const {
+    return studentCourses[4].getCourseName();
+}
+
+std::string Student::getCourse6Name() const {
+    return studentCourses[5].getCourseName();
+}
+
+
+std::string Student::getCourse1Code() const {
+    return studentCourses[0].getCourseCode();
+}
+
+std::string Student::getCourse2Code() const {
+    return studentCourses[1].getCourseCode();
+}
+
+std::string Student::getCourse3Code() const {
+    return studentCourses[2].getCourseCode();
+}
+
+std::string Student::getCourse4Code() const {
+    return studentCourses[3].getCourseCode();
+}
+
+std::string Student::getCourse5Code() const {
+    return studentCourses[4].getCourseCode();
+}
+
+std::string Student::getCourse6Code() const {
+    return studentCourses[5].getCourseCode();
 }

@@ -34,6 +34,20 @@ public:
     float getCGPA() const;
     std::string getAAName() const;
 
+    std::string getCourse1Name() const;
+    std::string getCourse2Name() const;
+    std::string getCourse3Name() const;
+    std::string getCourse4Name() const;
+    std::string getCourse5Name() const;
+    std::string getCourse6Name() const;
+
+    std::string getCourse1Code() const;
+    std::string getCourse2Code() const;
+    std::string getCourse3Code() const;
+    std::string getCourse4Code() const;
+    std::string getCourse5Code() const;
+    std::string getCourse6Code() const;
+
     void setMatricNum(const std::string& matricNum);
     void setDateOfBirth(int dateOfBirth);
     void setNationality(const std::string& nationality);

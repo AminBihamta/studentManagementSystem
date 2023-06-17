@@ -1,5 +1,17 @@
-courseName1
-courseCode1
+Course1
+CourseCode1
 
-courseName2
-courseCode2
+Course2
+CourseCode2
+
+Course3
+CourseCode3
+
+Course4
+CourseCode4
+
+Course5
+CourseCode5
+
+Course6
+CourseCode6

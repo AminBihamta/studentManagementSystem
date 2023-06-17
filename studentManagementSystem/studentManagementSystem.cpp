@@ -77,7 +77,7 @@ void readCourses(Course courses[]) {
         int i = 0;
         string name, code;
 
-        for (int i = 0; i < aaCount; i++)
+        for (int i = 0; i < courseCount; i++)
         {
 
             std::getline(inputFile2 >> ws, name);
@@ -103,7 +103,7 @@ void findStudentCount() {
         }
         lineCount++;
         inputFile.close();
-        studentCount = lineCount / 17;
+        studentCount = lineCount / 23;
     }
     else {
         std::cout << "Unable to open student database." << endl;
@@ -138,19 +138,19 @@ void readStudent(Student students[], AA academicAdvisors[], Course courses[]) {
             inputFile2 >> semester;
             std::getline(inputFile2 >> ws, AA);
             std::getline(inputFile2 >> ws, _course1);
+            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(inputFile2 >> ws, _course2);
+            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(inputFile2 >> ws, _course3);
+            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(inputFile2 >> ws, _course4);
+            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(inputFile2 >> ws, _course5);
+            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::getline(inputFile2 >> ws, _course6);
+            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             inputFile2 >> CGPA;
 
-            Course course1(_course1);
-            Course course2(_course2);
-            Course course3(_course3);
-            Course course4(_course4);
-            Course course5(_course5);
-            Course course6(_course6);
 
             //inputFile2 >> email >> phoneNum >> matricNum >> dateOfBirth >> nationality >> passNum >> semester >> AA >> CGPA;
 
@@ -161,6 +161,60 @@ void readStudent(Student students[], AA academicAdvisors[], Course courses[]) {
                     currentAA = i;
             }
         }
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (_course1 == courses[i].getCourseName()) {
+                course1 = courses[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (_course2 == courses[i].getCourseName()) {
+                course2 = courses[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (_course3 == courses[i].getCourseName()) {
+                course3 = courses[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (_course4 == courses[i].getCourseName()) {
+                course4 = courses[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (_course5 == courses[i].getCourseName()) {
+                course5 = courses[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < courseCount; i++)
+        {
+            if (_course6 == courses[i].getCourseName()) {
+                course6 = courses[i];
+                break;
+            }
+        }
+        // Course course2(_course2);
+        // Course course3(_course3);
+        // Course course4(_course4);
+        // Course course5(_course5);
+        // Course course6(_course6);
+
         Student tempStudent(name, email, phoneNum, matricNum, dateOfBirth, nationality, passNum, semester, academicAdvisors[i], 
             course1, course2, course3, course4, course5, course6, CGPA);
         students[i] = tempStudent;
@@ -392,6 +446,26 @@ void printRecord(int choice, Student students[], AA aas[], Course courses[]) {
             std::cout << "Passport Number: " << students[i].getPassNum() << endl;
             std::cout << "Semester: " << students[i].getSemester() << endl;
             std::cout << "Academic Advisor: " << students[i].getAAName() << endl;
+            std::cout << "Courses: " << endl;
+
+            std::cout << students[i].getCourse1Name() << endl;
+            std::cout << students[i].getCourse1Code() << endl;
+
+            std::cout << students[i].getCourse2Name() << endl;
+            std::cout << students[i].getCourse2Code() << endl;
+
+            std::cout << students[i].getCourse3Name() << endl;
+            std::cout << students[i].getCourse3Code() << endl;
+
+            std::cout << students[i].getCourse4Name() << endl;
+            std::cout << students[i].getCourse4Code() << endl;
+
+            std::cout << students[i].getCourse5Name() << endl;
+            std::cout << students[i].getCourse5Code() << endl;
+
+            std::cout << students[i].getCourse6Name() << endl;
+            std::cout << students[i].getCourse6Code() << endl;
+
             std::cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl;
             std::cout << endl;
         }
@@ -401,7 +475,8 @@ void printRecord(int choice, Student students[], AA aas[], Course courses[]) {
             std::cout << "Academic Advisor " << i + 1 << ":\n";
             std::cout << "Name: " << aas[i].getName() << endl;
             std::cout << "Email: " << aas[i].getEmail() << endl;
-            std::cout << endl << endl;
+            std::cout << "Phone number: " << aas[i].getPhoneNum() << endl;
+            std::cout << endl;
         }
     }
     else {
@@ -433,7 +508,6 @@ void printRecord(Student student) {
     //std::cout << "========== { Student } ==========" << endl << endl;
 
 }
-
 
 void printRecord(AA aa) {
     system("cls");
@@ -833,8 +907,8 @@ int main()
     Student* students = new Student[maxCount];
    
     readAA(academicAdvisors);
-    readStudent(students, academicAdvisors, courses);
     readCourses(courses);
+    readStudent(students, academicAdvisors, courses);
     // Fine
     std::cout << "Total Number of Students | " << studentCount << "\tTotal Number of Academic Advisors | " << aaCount << "\tTotal Number of Courses | " << courseCount << endl << endl;
     std::cout << "======{ Menu }======" << endl << endl;

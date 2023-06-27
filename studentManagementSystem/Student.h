@@ -54,6 +54,7 @@ public:
     void setPassNum(const std::string& passNum);
     void setSemester(int semester);
     void setCGPA(float CGPA);
+    void setAA(AA _aa);
 
 };
 

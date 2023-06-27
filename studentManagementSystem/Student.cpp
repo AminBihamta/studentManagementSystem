@@ -76,6 +76,10 @@ void Student::setCGPA(float CGPA) {
     this->CGPA = CGPA;
 }
 
+void Student::setAA(AA _aa) {
+    academicAdvisor = _aa;
+}
+
 std::string Student::getAAName() const {
     return academicAdvisor.getName();
 }

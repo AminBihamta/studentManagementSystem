@@ -1,4 +1,4 @@
-Mohammad Amin Bihamta Toosi
+Mohammad Amin Bihamta Toosi New
 bihamta@graduate.utm.my
 +6018242591
 A22Mj4004
@@ -6,7 +6,7 @@ A22Mj4004
 Iranian
 samplePassNum
 2
-SampleAAName
+SampleAAName1
 Course1
 CourseCode1
 Course2
@@ -20,3 +20,4 @@ CourseCode5
 Course6
 CourseCode6
 4
+

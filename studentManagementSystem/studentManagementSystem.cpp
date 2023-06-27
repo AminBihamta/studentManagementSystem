@@ -15,6 +15,17 @@ int aaCount = 0;
 int courseCount = 0;
 int currentRecord = 0;
 
+AA findAAByName(string aaName, vector<AA> academicAdvisors) {
+    int currentAA = 0;
+    for (int j = 0; j < academicAdvisors.size(); j++) {
+        if (aaName == academicAdvisors[j].getName()) {
+            currentAA = j;
+            break;
+        }
+    }
+
+    return academicAdvisors[currentAA];
+}
 
 void findAACount() {
     ifstream inputFile("aa.txt");
@@ -110,13 +121,11 @@ void readDatabase(vector<Course>& courses) {
 }
 
 Course findCourseByName(const vector<Course>& courses, const string& courseName) {
-    for (const auto& course : courses) {
-        if (course.getCourseName() == courseName) {
-            return course;
+    for (int i = 0; i < courseCount; i++) {
+        if (courses[i].getCourseName() == courseName) {
+            return courses[i];
         }
     }
-    // Handle the case when the course is not found
-    // You can throw an exception, return a default Course object, or handle it based on your requirements
 }
 
 void readDatabase(vector<Student>& students, vector<AA>& academicAdvisors, vector<Course>& courses) {
@@ -162,15 +171,44 @@ void readDatabase(vector<Student>& students, vector<AA>& academicAdvisors, vecto
                     break;
                 }
             }
-
+            
             Course course1, course2, course3, course4, course5, course6;
+            for (int i = 0; i < courseCount; i++) {
+                if (courses[i].getCourseName() == _course1) {
+                    course1 = courses[i];
+                }
+            }
 
-            course1 = findCourseByName(courses, _course1);
-            course2 = findCourseByName(courses, _course2);
-            course3 = findCourseByName(courses, _course3);
-            course4 = findCourseByName(courses, _course4);
-            course5 = findCourseByName(courses, _course5);
-            course6 = findCourseByName(courses, _course6);
+            for (int i = 0; i < courseCount; i++) {
+                if (courses[i].getCourseName() == _course2) {
+                    course2 = courses[i];
+                }
+            }
+
+            for (int i = 0; i < courseCount; i++) {
+                if (courses[i].getCourseName() == _course3) {
+                    course3 = courses[i];
+                }
+            }
+
+            for (int i = 0; i < courseCount; i++) {
+                if (courses[i].getCourseName() == _course4) {
+                    course4 = courses[i];
+                }
+            }
+
+            for (int i = 0; i < courseCount; i++) {
+                if (courses[i].getCourseName() == _course5) {
+                    course5 = courses[i];
+                }
+            }
+
+            for (int i = 0; i < courseCount; i++) {
+                if (courses[i].getCourseName() == _course6) {
+                    course6 = courses[i];
+                }
+            }
+
 
             Student tempStudent(name, email, phoneNum, matricNum, dateOfBirth, nationality, passNum, semester,
                 academicAdvisors[currentAA], course1, course2, course3, course4, course5, course6, CGPA);
@@ -201,100 +239,117 @@ int actorSelector() {
     return choice;
 }
 
-void addStudent(Student students[]) {
-    //string tempString;
+void addRecord(vector<Student>& students, vector<Course> courses, vector<AA> academicAdvisors) { //IWASHERE
+    string name, email, phoneNum, matricNum, dateOfBirth, nationality, passNum, aa, _course1, _course2, _course3, _course4,
+        _course5, _course6, semester, cgpa;
+    Course course1, course2, course3, course4, course5, course6;
 
-    //std::cout << "Enter name: ";
-    //std::cin.ignore();
-    //std::getline(std::cin, tempString);
-    //students[studentCount + 1].setName(tempString);
-
-    //std::cout << "Enter email address: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setEmail(tempString);
-
-    //std::cout << "Enter phone number: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setPhoneNum(tempString);
-
-    //std::cout << "Enter matric number: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setMatricNum(tempString);
-
-    //std::cout << "Enter date of birth: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setDateOfBirth(stoi(tempString));
-
-    //std::cout << "Enter nationallity: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setNationality(tempString);
-
-    //std::cout << "Enter passport/id number: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setPassNum(tempString);
-
-    //std::cout << "Enter semester: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setSemester(stoi(tempString));
-
-    //std::cout << "Enter academic advisor: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setAA(tempString);
-
-    //std::cout << "Enter CGPA: ";
-    //std::cin >> tempString;
-    //students[studentCount + 1].setCGPA(stof(tempString));
-
-    //ifstream inputFile("students.txt");
-    //ofstream outputFile("tempText.txt");
-
-    //string line;
-    //while (std::getline(inputFile, line)) {
-    //    outputFile << line << endl;
-    //}
-
-    //inputFile.close();
-    //outputFile.close();
-
-    //ifstream inputFile2("tempText.txt");
-    //ofstream outputFile2("students.txt");
-
-    //while (std::getline(inputFile2, line)) {
-    //    outputFile2 << line << endl;
-    //}
-
-    //outputFile2 << endl;
-    //outputFile2 << students[studentCount + 1].getName() << endl;
-    //outputFile2 << students[studentCount + 1].getEmail() << endl;
-    //outputFile2 << students[studentCount + 1].getPhoneNum() << endl;
-    //outputFile2 << students[studentCount + 1].getMatricNum() << endl;
-    //outputFile2 << students[studentCount + 1].getDateOfBirth() << endl;
-    //outputFile2 << students[studentCount + 1].getNationality() << endl;
-    //outputFile2 << students[studentCount + 1].getPassNum() << endl;
-    //outputFile2 << students[studentCount + 1].getSemester() << endl;
-    //outputFile2 << students[studentCount + 1].getAA() << endl;
-    //outputFile2 << students[studentCount + 1].getCGPA() << endl;
-
-    //inputFile2.close();
-    //outputFile2.close();
-}
-
-void addAcademicAdvisor(AA aas[]) {
-
-    string tempString;
 
     std::cout << "Enter name: ";
     std::cin.ignore();
-    std::getline(std::cin, tempString);
-    aas[studentCount + 1].setName(tempString);
+    std::getline(std::cin, name);
 
     std::cout << "Enter email address: ";
-    std::cin >> tempString;
-    aas[studentCount + 1].setEmail(tempString);
+    std::cin >> email;
 
     std::cout << "Enter phone number: ";
-    std::cin >> tempString;
-    aas[studentCount + 1].setPhoneNum(tempString);
+    std::cin >> phoneNum;
+
+    std::cout << "Enter matric number: ";
+    std::cin >> matricNum;
+
+    std::cout << "Enter date of birth: ";
+    std::cin >> dateOfBirth;
+
+    std::cout << "Enter nationallity: ";
+    std::cin >> nationality;
+
+    std::cout << "Enter passport/id number: ";
+    std::cin >> passNum;
+
+    std::cout << "Enter semester: ";
+    std::cin >> semester;
+
+    std::cout << "Enter academic advisor: ";
+    std::cin >> aa;
+
+    cout << "Enter course name: ";
+    getline(cin, _course1);
+    cout << "Enter course name: ";
+    getline(cin, _course2);
+    cout << "Enter course name: ";
+    getline(cin, _course3);
+    cout << "Enter course name: ";
+    getline(cin, _course4);
+    cout << "Enter course name: ";
+    getline(cin, _course5);
+    cout << "Enter course name: ";
+    getline(cin, _course6);
+
+    course1 = findCourseByName(courses, _course1);
+    course2 = findCourseByName(courses, _course2);
+    course3 = findCourseByName(courses, _course3);
+    course4 = findCourseByName(courses, _course4);
+    course5 = findCourseByName(courses, _course5);
+    course6 = findCourseByName(courses, _course6);
+
+    std::cout << "Enter CGPA: ";
+    std::cin >> cgpa;
+
+    ifstream inputFile("students.txt");
+    ofstream outputFile("tempText.txt");
+
+    Student tempStudent(name, email, phoneNum, matricNum, stoi(dateOfBirth), nationality, passNum, stoi(semester),
+        findAAByName(aa, academicAdvisors), course1, course2, course3, course4, course5, course6, stof(cgpa));
+    students.push_back(tempStudent);
+
+    string line;
+    while (std::getline(inputFile, line)) {
+        outputFile << line << endl;
+    }
+
+    inputFile.close();
+    outputFile.close();
+
+    ifstream inputFile2("tempText.txt");
+    ofstream outputFile2("students.txt");
+
+    while (std::getline(inputFile2, line)) {
+        outputFile2 << line << endl;
+    }
+
+    outputFile2 << endl;
+    outputFile2 << students[studentCount + 1].getName() << endl;
+    outputFile2 << students[studentCount + 1].getEmail() << endl;
+    outputFile2 << students[studentCount + 1].getPhoneNum() << endl;
+    outputFile2 << students[studentCount + 1].getMatricNum() << endl;
+    outputFile2 << students[studentCount + 1].getDateOfBirth() << endl;
+    outputFile2 << students[studentCount + 1].getNationality() << endl;
+    outputFile2 << students[studentCount + 1].getPassNum() << endl;
+    outputFile2 << students[studentCount + 1].getSemester() << endl;
+    outputFile2 << students[studentCount + 1].getAAName() << endl;
+    outputFile2 << students[studentCount + 1].getCGPA() << endl;
+
+    inputFile2.close();
+    outputFile2.close();
+}
+
+void addRecord(vector<AA> academicAdvisors) {
+
+    string name, email, phoneNum;
+
+    std::cout << "Enter name: ";
+    std::cin.ignore();
+    std::getline(std::cin, name);
+
+    std::cout << "Enter email address: ";
+    std::cin >> email;
+
+    std::cout << "Enter phone number: ";
+    std::cin >> phoneNum;
+
+    AA tempAA(name, email, phoneNum);
+    academicAdvisors.push_back(tempAA);
 
     ifstream inputFile("aa.txt");
     ofstream outputFile("tempText.txt");
@@ -315,27 +370,28 @@ void addAcademicAdvisor(AA aas[]) {
     }
 
     outputFile2 << endl;
-    outputFile2 << aas[studentCount + 1].getName() << endl;
-    outputFile2 << aas[studentCount + 1].getEmail() << endl;
-    outputFile2 << aas[studentCount + 1].getPhoneNum() << endl;
+    outputFile2 << academicAdvisors[aaCount + 1].getName() << endl;
+    outputFile2 << academicAdvisors[aaCount + 1].getEmail() << endl;
+    outputFile2 << academicAdvisors[aaCount + 1].getPhoneNum() << endl;
 
     inputFile2.close();
     outputFile2.close();
 }
 
-void addCourse(Course courses[]) {
+void addRecord(vector<Course> courses) {
 
 
-    string tempString;
+    string name, code;
 
     std::cout << "Enter course name: ";
     std::cin.ignore();
-    std::getline(std::cin, tempString);
-    courses[studentCount + 1].setCourseName(tempString);
+    std::getline(std::cin, name);
 
     std::cout << "Enter course code: ";
-    std::cin >> tempString;
-    courses[studentCount + 1].setCourseCode(tempString);
+    std::cin >> code;
+
+    Course tempCourse(name, code);
+    courses.push_back(tempCourse);
 
     ifstream inputFile("courses.txt");
     ofstream outputFile("tempText.txt");
@@ -356,8 +412,8 @@ void addCourse(Course courses[]) {
     }
 
     outputFile2 << endl;
-    outputFile2 << courses[studentCount + 1].getCourseName() << endl;
-    outputFile2 << courses[studentCount + 1].getCourseCode() << endl;
+    outputFile2 << courses[courseCount + 1].getCourseName() << endl;
+    outputFile2 << courses[courseCount + 1].getCourseCode() << endl;
 
     inputFile2.close();
     outputFile2.close();
@@ -378,18 +434,18 @@ void printSMS() {
 )" << endl;
 }
 
-void addRecord(int choice, Student students[], AA aas[], Course courses[]) {
+void addRecord(int choice, vector<Student>& students, vector<AA>& academicAdvisors, vector<Course> &courses) {
     if (choice == 1) {
         printSMS();
-        addStudent(students);
+        addRecord(students, courses, academicAdvisors);
     }
     else if (choice == 2) {
         printSMS();
-        addAcademicAdvisor(aas);
+        addRecord(academicAdvisors);
     }
     else {
         printSMS();
-        addCourse(courses);
+        addRecord(courses);
     }
 }
 
@@ -452,21 +508,21 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
 }
 
 void printRecord(Student student) {
-    //system("cls");
-    //printSMS();
-    //std::cout << "========== { Student } ==========" << endl << endl;
-    //std::cout << "Name: " << student.getName() << endl;
-    //std::cout << "Email: " << student.getEmail() << endl;
-    //std::cout << "Phone Number: " << student.getPhoneNum() << endl;
-    //std::cout << "Matriculation Number: " << student.getMatricNum() << endl;
-    //std::cout << "Date of Birth: " << student.getDateOfBirth() << endl;
-    //std::cout << "Nationality: " << student.getNationality() << endl;
-    //std::cout << "Passport Number: " << student.getPassNum() << endl;
-    //std::cout << "Semester: " << student.getSemester() << endl;
-    //std::cout << "Academic Advisor: " << student.getAA() << endl;
-    //std::cout << fixed << setprecision(2) << "CGPA: " << student.getCGPA() << endl;
-    //std::cout << endl;
-    //std::cout << "========== { Student } ==========" << endl << endl;
+    system("cls");
+    printSMS();
+    std::cout << "========== { Student } ==========" << endl << endl;
+    std::cout << "Name: " << student.getName() << endl;
+    std::cout << "Email: " << student.getEmail() << endl;
+    std::cout << "Phone Number: " << student.getPhoneNum() << endl;
+    std::cout << "Matriculation Number: " << student.getMatricNum() << endl;
+    std::cout << "Date of Birth: " << student.getDateOfBirth() << endl;
+    std::cout << "Nationality: " << student.getNationality() << endl;
+    std::cout << "Passport Number: " << student.getPassNum() << endl;
+    std::cout << "Semester: " << student.getSemester() << endl;
+    std::cout << "Academic Advisor: " << student.getAAName() << endl;
+    std::cout << fixed << setprecision(2) << "CGPA: " << student.getCGPA() << endl;
+    std::cout << endl;
+    std::cout << "========== { Student } ==========" << endl << endl;
 
 }
 
@@ -493,7 +549,7 @@ void printRecord(Course course) {
 
 }
 
-int findRecord(Student students[]) {
+int findRecord(vector<Student> students) {
     system("cls");
     printSMS();
     std::cout << R"(================ { Menue } ================
@@ -560,7 +616,7 @@ What identifier would you like to provide?
 
 }
 
-int findRecord(AA aas[]) {
+int findRecord(vector<AA> aas) {
     system("cls");
     printSMS();
     std::cout << R"(================ { Menue } ================
@@ -613,7 +669,7 @@ What identifier would you like to provide?
     }
 }
 
-int findRecord(Course courses[]) {
+int findRecord(vector<Course> courses) {
     system("cls");
     printSMS();
     std::cout << R"(================ { Menue } ================
@@ -654,126 +710,124 @@ What identifier would you like to provide?
 }
 
 
-//Student updateRecord(Student student) {
-//    int choice = 0;
-//    std::cout << R"(================= { Menu } =================
-//
-//Which information would you like to update?
-//1. Name
-//2. Email
-//3. Phone Number
-//4. Matriculation Number
-//5. Date of Birth
-//6. Nationality
-//7. Passport Number
-//8. Semester
-//9. Academic Advisor
-//10. CGPA
-//
-//================= { Menu } =================
-//
-//Your response: )";
-//
-//    std::cin >> choice;
-//    string tempInput;
-//
-//    switch (choice) {
-//    case 1:
-//        std::cout << "Enter name: ";
-//        std::cin.ignore();
-//        std::getline(std::cin, tempInput);
-//        student.setName(tempInput);
-//        break;
-//    case 2:
-//        std::cout << "Enter email: ";
-//        std::cin >> tempInput;
-//        student.setEmail(tempInput);
-//        break;
-//    case 3:
-//        std::cout << "Enter phone number: ";
-//        std::cin >> tempInput;
-//        student.setPhoneNum(tempInput);
-//    case 4:
-//        std::cout << "Enter matric number: ";
-//        std::cin >> tempInput;
-//        student.setMatricNum(tempInput);
-//        break;
-//    case 5:
-//        std::cout << "Enter date of birth (YYYYMMDD): ";
-//        std::cin >> tempInput;
-//        student.setDateOfBirth(stoi(tempInput));
-//        break;
-//    case 6:
-//        std::cout << "Enter nationality: ";
-//        std::cin >> tempInput;
-//        student.setNationality(tempInput);
-//        break;
-//    case 7:
-//        std::cout << "Enter passport number: ";
-//        std::cin >> tempInput;
-//        student.setPassNum(tempInput);
-//        break;
-//    case 8:
-//        std::cout << "Enter semester: ";
-//        std::cin >> tempInput;
-//        student.setSemester(stoi(tempInput));
-//        break;
-//    case 9:
-//        std::cout << "Enter academic advisor: ";
-//        std::cin >> tempInput;
-//        student.setAA(tempInput);
-//        break;
-//    case 10:
-//        std::cout << "Enter CGPA: ";
-//        std::cin >> tempInput;
-//        student.setCGPA(stof(tempInput));
-//        break;
-//    default:
-//        std::cout << "Invalid choice." << endl;
-//        break;
-//    }
-//
-//    return student;
-//}
+Student updateRecord(Student student, vector<AA> academicAdvisors) {
+    int choice = 0;
+    std::cout << R"(================= { Menu } =================
 
-//AA updateRecord(AA aa) {
-//    int choice = 0;
-//    std::cout << R"(================= { Menu } =================
-//
-//Which information would you like to update?
-//1. Name
-//2. Email
-//3. Phone Number
-//
-//================= { Menu } =================
-//
-//Your response: )";
-//
-//    std::cin >> choice;
-//    string tempInput;
-//
-//    switch (choice) {
-//    case 1:
-//        std::cout << "Enter name: ";
-//        std::cin.ignore();
-//        std::getline(std::cin, tempInput);
-//        aa.setName(tempInput);
-//        break;
-//    case 2:
-//        std::cout << "Enter email: ";
-//        std::cin >> tempInput;
-//        aa.setEmail(tempInput);
-//        break;
-//    case 3:
-//        std::cout << "Enter phone number: ";
-//        std::cin >> tempInput;
-//        aa.setPhoneNum(tempInput);
-//    default:
-//        std::cout << "Invalid choice." << endl;
-//        break;
-//    }
-//    return aa;
-//}
+Which information would you like to update?
+1. Name
+2. Email
+3. Phone Number
+4. Matriculation Number
+5. Date of Birth
+6. Nationality
+7. Passport Number
+8. Semester
+9. Academic Advisor
+10. CGPA
+
+================= { Menu } =================
+
+Your response: )";
+
+    std::cin >> choice;
+    string tempInput;
+
+    switch (choice) {
+    case 1:
+        std::cout << "Enter name: ";
+        std::cin.ignore();
+        std::getline(std::cin, tempInput);
+        student.setName(tempInput);
+        break;
+    case 2:
+        std::cout << "Enter email: ";
+        std::cin >> tempInput;
+        student.setEmail(tempInput);
+        break;
+    case 3:
+        std::cout << "Enter phone number: ";
+        std::cin >> tempInput;
+        student.setPhoneNum(tempInput);
+    case 4:
+        std::cout << "Enter matric number: ";
+        std::cin >> tempInput;
+        student.setMatricNum(tempInput);
+        break;
+    case 5:
+        std::cout << "Enter date of birth (YYYYMMDD): ";
+        std::cin >> tempInput;
+        student.setDateOfBirth(stoi(tempInput));
+        break;
+    case 6:
+        std::cout << "Enter nationality: ";
+        std::cin >> tempInput;
+        student.setNationality(tempInput);
+        break;
+    case 7:
+        std::cout << "Enter passport number: ";
+        std::cin >> tempInput;
+        student.setPassNum(tempInput);
+        break;
+    case 8:
+        std::cout << "Enter semester: ";
+        std::cin >> tempInput;
+        student.setSemester(stoi(tempInput));
+        break;
+    case 9:
+        std::cout << "Enter academic advisor: ";
+        std::cin >> tempInput;
+
+        student.setAA(findAAByName(tempInput, academicAdvisors));
+        break;
+    case 10:
+        std::cout << "Enter CGPA: ";
+        std::cin >> tempInput;
+        student.setCGPA(stof(tempInput));
+        break;
+    }
+
+    return student;
+}
+
+AA updateRecord(AA aa) {
+    int choice = 0;
+    std::cout << R"(================= { Menu } =================
+
+Which information would you like to update?
+1. Name
+2. Email
+3. Phone Number
+
+================= { Menu } =================
+
+Your response: )";
+
+    std::cin >> choice;
+    string tempInput;
+
+    switch (choice) {
+    case 1:
+        std::cout << "Enter name: ";
+        std::cin.ignore();
+        std::getline(std::cin, tempInput);
+        aa.setName(tempInput);
+        break;
+    case 2:
+        std::cout << "Enter email: ";
+        std::cin >> tempInput;
+        aa.setEmail(tempInput);
+        break;
+    case 3:
+        std::cout << "Enter phone number: ";
+        std::cin >> tempInput;
+        aa.setPhoneNum(tempInput);
+    default:
+        std::cout << "Invalid choice." << endl;
+        break;
+    }
+    return aa;
+}
 
 Course updateRecord(Course course) {
     int choice = 0;
@@ -810,26 +864,44 @@ Your response: )";
 }
 
 
-void updateDatabase(Student students[]) {
-    //ofstream outputFile("students.txt");
+void updateDatabase(vector<Student> students) {
+    ofstream outputFile("students.txt");
 
-    //for (int i = 0; i < studentCount; i++)
-    //{
-    //    outputFile << students[i].getName() << endl;
-    //    outputFile << students[i].getEmail() << endl;
-    //    outputFile << students[i].getPhoneNum() << endl;
-    //    outputFile << students[i].getMatricNum() << endl;
-    //    outputFile << students[i].getDateOfBirth() << endl;
-    //    outputFile << students[i].getNationality() << endl;
-    //    outputFile << students[i].getPassNum() << endl;
-    //    outputFile << students[i].getSemester() << endl;
-    //    outputFile << students[i].getAA() << endl;
-    //    outputFile << students[i].getCGPA() << endl;
-    //    outputFile << endl;
-    //}
+    for (int i = 0; i < studentCount; i++)
+    {
+        outputFile << students[i].getName() << endl;
+        outputFile << students[i].getEmail() << endl;
+        outputFile << students[i].getPhoneNum() << endl;
+        outputFile << students[i].getMatricNum() << endl;
+        outputFile << students[i].getDateOfBirth() << endl;
+        outputFile << students[i].getNationality() << endl;
+        outputFile << students[i].getPassNum() << endl;
+        outputFile << students[i].getSemester() << endl;
+        outputFile << students[i].getAAName() << endl;
+        outputFile << students[i].getCGPA() << endl;
+        
+        outputFile << students[i].getCourse1Name();
+        outputFile << students[i].getCourse1Code();
+
+        outputFile << students[i].getCourse2Name();
+        outputFile << students[i].getCourse2Code();
+
+        outputFile << students[i].getCourse3Name();
+        outputFile << students[i].getCourse3Code();
+
+        outputFile << students[i].getCourse4Name();
+        outputFile << students[i].getCourse4Code();
+
+        outputFile << students[i].getCourse5Name();
+        outputFile << students[i].getCourse5Code();
+
+        outputFile << students[i].getCourse6Name();
+        outputFile << students[i].getCourse6Code();
+        outputFile << endl;
+    }
 }
 
-void updateDatabase(AA aas[]) {
+void updateDatabase(vector<AA>& aas) {
     ofstream outputFile("aa.txt");
 
     for (int i = 0; i < courseCount; i++)
@@ -841,7 +913,7 @@ void updateDatabase(AA aas[]) {
     }
 }
 
-void updateDatabase(Course courses[]) {
+void updateDatabase(vector<Course>& courses) {
     ofstream outputFile("courses.txt");
 
     for (int i = 0; i < courseCount; i++)
@@ -888,35 +960,35 @@ int main()
         int tempChoice = actorSelector();
         printRecord(tempChoice, students, academicAdvisors, courses);
     }
-    //else if (choice == 2) {
-    //    printSMS();
-    //    int tempChoice = actorSelector();
-    //    if (choice == 1) {
-    //        currentRecord = findRecord(students);
-    //        printRecord(students[currentRecord]);
-    //        students[currentRecord] = updateRecord(students[currentRecord]);
-    //        updateDatabase(students);
-    //    }
-    //    else if (choice == 2) {
-    //        currentRecord = findRecord(academicAdvisors);
-    //        printRecord(academicAdvisors[currentRecord]);
-    //        academicAdvisors[currentRecord] = updateRecord(academicAdvisors[currentRecord]);
-    //        updateDatabase(academicAdvisors);
-    //    }
-    //    else if (choice == 3) {
-    //        currentRecord = findRecord(courses);
-    //        printRecord(courses[currentRecord]);
-    //        courses[currentRecord] = updateRecord(courses[currentRecord]);
-    //        updateDatabase(courses);
-    //    }
-    //}
-    //else if (choice == 3) {
-    //    printSMS();
-    //    int tempChoice = actorSelector();
-    //    addRecord(tempChoice, students, academicAdvisors, courses);
-    //}
-    //else {
-    //}
+    else if (choice == 2) {
+        printSMS();
+        int tempChoice = actorSelector();
+        if (tempChoice == 1) {
+            currentRecord = findRecord(students);
+            printRecord(students[currentRecord]);
+            students[currentRecord] = updateRecord(students[currentRecord], academicAdvisors);
+            updateDatabase(students);
+        }
+        else if (tempChoice == 2) {
+            currentRecord = findRecord(academicAdvisors);
+            printRecord(academicAdvisors[currentRecord]);
+            academicAdvisors[currentRecord] = updateRecord(academicAdvisors[currentRecord]);
+            updateDatabase(academicAdvisors);
+        }
+        else if (tempChoice == 3) {
+            currentRecord = findRecord(courses);
+            printRecord(courses[currentRecord]);
+            courses[currentRecord] = updateRecord(courses[currentRecord]);
+            updateDatabase(courses);
+        }
+    }
+    else if (choice == 3) {
+        printSMS();
+        int tempChoice = actorSelector();
+        addRecord(tempChoice, students, academicAdvisors, courses);
+    }
+    else {
+    }
 
     std::cout << "Would you like to exit the program?" << endl;
     std::cout << "1. Yes" << endl;

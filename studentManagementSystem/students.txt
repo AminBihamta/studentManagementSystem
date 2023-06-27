@@ -19,5 +19,5 @@ Course5
 CourseCode5
 Course6
 CourseCode6
-4
+2
 

@@ -1,3 +1,5 @@
+// TODO Write a text when user choose update, 1
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -520,6 +522,25 @@ void printRecord(Student student) {
     std::cout << "Passport Number: " << student.getPassNum() << endl;
     std::cout << "Semester: " << student.getSemester() << endl;
     std::cout << "Academic Advisor: " << student.getAAName() << endl;
+
+    std::cout << student.getCourse1Name() << endl;
+    std::cout << student.getCourse1Code() << endl;
+
+    std::cout << student.getCourse2Name() << endl;
+    std::cout << student.getCourse2Code() << endl;
+
+    std::cout << student.getCourse3Name() << endl;
+    std::cout << student.getCourse3Code() << endl;
+
+    std::cout << student.getCourse4Name() << endl;
+    std::cout << student.getCourse4Code() << endl;
+
+    std::cout << student.getCourse5Name() << endl;
+    std::cout << student.getCourse5Code() << endl;
+
+    std::cout << student.getCourse5Name() << endl;
+    std::cout << student.getCourse5Code() << endl;
+
     std::cout << fixed << setprecision(2) << "CGPA: " << student.getCGPA() << endl;
     std::cout << endl;
     std::cout << "========== { Student } ==========" << endl << endl;
@@ -878,25 +899,25 @@ void updateDatabase(vector<Student> students) {
         outputFile << students[i].getPassNum() << endl;
         outputFile << students[i].getSemester() << endl;
         outputFile << students[i].getAAName() << endl;
-        outputFile << students[i].getCGPA() << endl;
         
-        outputFile << students[i].getCourse1Name();
-        outputFile << students[i].getCourse1Code();
+        outputFile << students[i].getCourse1Name() << endl;
+        outputFile << students[i].getCourse1Code() << endl;
 
-        outputFile << students[i].getCourse2Name();
-        outputFile << students[i].getCourse2Code();
+        outputFile << students[i].getCourse2Name() << endl;
+        outputFile << students[i].getCourse2Code() << endl;
 
-        outputFile << students[i].getCourse3Name();
-        outputFile << students[i].getCourse3Code();
+        outputFile << students[i].getCourse3Name() << endl;
+        outputFile << students[i].getCourse3Code() << endl;
 
-        outputFile << students[i].getCourse4Name();
-        outputFile << students[i].getCourse4Code();
+        outputFile << students[i].getCourse4Name() << endl;
+        outputFile << students[i].getCourse4Code() << endl;
 
-        outputFile << students[i].getCourse5Name();
-        outputFile << students[i].getCourse5Code();
+        outputFile << students[i].getCourse5Name() << endl;
+        outputFile << students[i].getCourse5Code() << endl;
 
-        outputFile << students[i].getCourse6Name();
-        outputFile << students[i].getCourse6Code();
+        outputFile << students[i].getCourse6Name() << endl;
+        outputFile << students[i].getCourse6Code() << endl;
+        outputFile << students[i].getCGPA() << endl;
         outputFile << endl;
     }
 }
@@ -941,7 +962,7 @@ int main()
     readDatabase(academicAdvisors);
     readDatabase(courses);
     readDatabase(students, academicAdvisors, courses);
-    // Fine
+
     std::cout << "Total Number of Students | " << studentCount << "\tTotal Number of Academic Advisors | " << aaCount << "\tTotal Number of Courses | " << courseCount << endl << endl;
     std::cout << "======{ Menu }======" << endl << endl;
     std::cout << "Choose an option" << endl;

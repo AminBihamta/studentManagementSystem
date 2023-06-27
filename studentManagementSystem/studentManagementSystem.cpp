@@ -5,6 +5,7 @@
 #include "AA.h"
 #include "Student.h"
 #include "Course.h"
+#include <vector>
 
 #include <iomanip>
 using namespace std;
@@ -32,28 +33,6 @@ void findAACount() {
     }
 }
 
-void readAA(AA academicAdvisors[]) {
-
-    ifstream inputFile2("aa.txt");
-    if (inputFile2.is_open()) {
-        int i = 0;
-        string name, email, phoneNum;
-
-        for (int i = 0; i < aaCount; i++)
-        {
-
-            std::getline(inputFile2 >> ws, name);
-            inputFile2 >> email >> phoneNum;
-
-           academicAdvisors[i].setName(name);
-           academicAdvisors[i].setEmail(email);
-           academicAdvisors[i].setPhoneNum(phoneNum);
-
-        }
-        inputFile2.close();
-    }
-}
-
 void findCourseCount() {
     ifstream inputFile("courses.txt");
     if (inputFile.is_open()) {
@@ -71,25 +50,7 @@ void findCourseCount() {
     }
 }
 
-void readCourses(Course courses[]) {
-    ifstream inputFile2("courses.txt");
-    if (inputFile2.is_open()) {
-        int i = 0;
-        string name, code;
 
-        for (int i = 0; i < courseCount; i++)
-        {
-
-            std::getline(inputFile2 >> ws, name);
-            inputFile2 >> code;
-
-            courses[i].setCourseName(name);
-            courses[i].setCourseCode(code);
-
-        }
-        inputFile2.close();
-    }
-}
 
 void findStudentCount() {
     ifstream inputFile("students.txt");
@@ -108,11 +69,59 @@ void findStudentCount() {
     }
 }
 
-void readStudent(Student students[], AA academicAdvisors[], Course courses[]) {
-
-    ifstream inputFile2("students.txt");
+void readDatabase(vector<AA>& academicAdvisors) {
+    ifstream inputFile2("aa.txt");
     if (inputFile2.is_open()) {
         int i = 0;
+        string name, email, phoneNum;
+
+        for (int i = 0; i < aaCount; i++)
+        {
+
+            std::getline(inputFile2 >> ws, name);
+            inputFile2 >> email >> phoneNum;
+
+            AA tempAA(name, email, phoneNum);
+
+            academicAdvisors.push_back(tempAA);
+        }
+        inputFile2.close();
+    }
+}
+
+void readDatabase(vector<Course>& courses) {
+    ifstream inputFile2("courses.txt");
+    if (inputFile2.is_open()) {
+        int i = 0;
+        string name, code;
+
+        for (int i = 0; i < courseCount; i++)
+        {
+
+            std::getline(inputFile2 >> ws, name);
+            inputFile2 >> code;
+
+            Course tempCourse(name, code);
+            courses.push_back(tempCourse);
+        }
+        inputFile2.close();
+    }
+
+}
+
+Course findCourseByName(const vector<Course>& courses, const string& courseName) {
+    for (const auto& course : courses) {
+        if (course.getCourseName() == courseName) {
+            return course;
+        }
+    }
+    // Handle the case when the course is not found
+    // You can throw an exception, return a default Course object, or handle it based on your requirements
+}
+
+void readDatabase(vector<Student>& students, vector<AA>& academicAdvisors, vector<Course>& courses) {
+    ifstream inputFile2("students.txt");
+    if (inputFile2.is_open()) {
         string name, email, phoneNum, _course1, _course2, _course3, _course4,
             _course5, _course6;
         string matricNum;
@@ -122,103 +131,57 @@ void readStudent(Student students[], AA academicAdvisors[], Course courses[]) {
         int semester;
         string AA;
         float CGPA;
-        Course course1, course2, course3, course4, course5, course6;
-        for (int i = 0; i < studentCount; i++)
-        {
 
-            std::getline(inputFile2 >> ws, name);
-            std::getline(inputFile2 >> ws, email);
-            std::getline(inputFile2 >> ws, phoneNum);
-            std::getline(inputFile2 >> ws, matricNum);
+        while (getline(inputFile2 >> ws, name)) {
+            getline(inputFile2 >> ws, email);
+            getline(inputFile2 >> ws, phoneNum);
+            getline(inputFile2 >> ws, matricNum);
             inputFile2 >> dateOfBirth;
-            std::getline(inputFile2 >> ws, nationality);
-            std::getline(inputFile2 >> ws, passNum);
+            getline(inputFile2 >> ws, nationality);
+            getline(inputFile2 >> ws, passNum);
             inputFile2 >> semester;
-            std::getline(inputFile2 >> ws, AA);
-            std::getline(inputFile2 >> ws, _course1);
-            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::getline(inputFile2 >> ws, _course2);
-            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::getline(inputFile2 >> ws, _course3);
-            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::getline(inputFile2 >> ws, _course4);
-            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::getline(inputFile2 >> ws, _course5);
-            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::getline(inputFile2 >> ws, _course6);
-            inputFile2.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            getline(inputFile2 >> ws, AA);
+            getline(inputFile2 >> ws, _course1);
+            inputFile2.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(inputFile2 >> ws, _course2);
+            inputFile2.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(inputFile2 >> ws, _course3);
+            inputFile2.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(inputFile2 >> ws, _course4);
+            inputFile2.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(inputFile2 >> ws, _course5);
+            inputFile2.ignore(numeric_limits<streamsize>::max(), '\n');
+            getline(inputFile2 >> ws, _course6);
+            inputFile2.ignore(numeric_limits<streamsize>::max(), '\n');
             inputFile2 >> CGPA;
 
-
-            //inputFile2 >> email >> phoneNum >> matricNum >> dateOfBirth >> nationality >> passNum >> semester >> AA >> CGPA;
-
             int currentAA = 0;
-            for (int i = 0; i < aaCount; i++)
-            {
-                if (AA == academicAdvisors[i].getName())
-                    currentAA = i;
+            for (int j = 0; j < academicAdvisors.size(); j++) {
+                if (AA == academicAdvisors[j].getName()) {
+                    currentAA = j;
+                    break;
+                }
             }
+
+            Course course1, course2, course3, course4, course5, course6;
+
+            course1 = findCourseByName(courses, _course1);
+            course2 = findCourseByName(courses, _course2);
+            course3 = findCourseByName(courses, _course3);
+            course4 = findCourseByName(courses, _course4);
+            course5 = findCourseByName(courses, _course5);
+            course6 = findCourseByName(courses, _course6);
+
+            Student tempStudent(name, email, phoneNum, matricNum, dateOfBirth, nationality, passNum, semester,
+                academicAdvisors[currentAA], course1, course2, course3, course4, course5, course6, CGPA);
+            students.push_back(tempStudent);
         }
 
-        for (int i = 0; i < courseCount; i++)
-        {
-            if (_course1 == courses[i].getCourseName()) {
-                course1 = courses[i];
-                break;
-            }
-        }
-
-        for (int i = 0; i < courseCount; i++)
-        {
-            if (_course2 == courses[i].getCourseName()) {
-                course2 = courses[i];
-                break;
-            }
-        }
-
-        for (int i = 0; i < courseCount; i++)
-        {
-            if (_course3 == courses[i].getCourseName()) {
-                course3 = courses[i];
-                break;
-            }
-        }
-
-        for (int i = 0; i < courseCount; i++)
-        {
-            if (_course4 == courses[i].getCourseName()) {
-                course4 = courses[i];
-                break;
-            }
-        }
-
-        for (int i = 0; i < courseCount; i++)
-        {
-            if (_course5 == courses[i].getCourseName()) {
-                course5 = courses[i];
-                break;
-            }
-        }
-
-        for (int i = 0; i < courseCount; i++)
-        {
-            if (_course6 == courses[i].getCourseName()) {
-                course6 = courses[i];
-                break;
-            }
-        }
-        // Course course2(_course2);
-        // Course course3(_course3);
-        // Course course4(_course4);
-        // Course course5(_course5);
-        // Course course6(_course6);
-
-        Student tempStudent(name, email, phoneNum, matricNum, dateOfBirth, nationality, passNum, semester, academicAdvisors[i], 
-            course1, course2, course3, course4, course5, course6, CGPA);
-        students[i] = tempStudent;
         inputFile2.close();
     }
 }
+
+
 
 int actorSelector() {
     int choice = 0;
@@ -430,7 +393,7 @@ void addRecord(int choice, Student students[], AA aas[], Course courses[]) {
     }
 }
 
-void printRecord(int choice, Student students[], AA aas[], Course courses[]) {
+void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Course> courses) {
     printSMS();
     if (choice == 1) {
         for (int i = 0; i < studentCount; i++) {
@@ -899,13 +862,13 @@ int main()
     findCourseCount();
     findStudentCount();
 
-    AA* academicAdvisors = new AA[maxCount];
-    Course* courses = new Course[maxCount];
-    Student* students = new Student[maxCount];
+    vector<AA> academicAdvisors;
+    vector<Course> courses;
+    vector<Student> students;
    
-    readAA(academicAdvisors);
-    readCourses(courses);
-    readStudent(students, academicAdvisors, courses);
+    readDatabase(academicAdvisors);
+    readDatabase(courses);
+    readDatabase(students, academicAdvisors, courses);
     // Fine
     std::cout << "Total Number of Students | " << studentCount << "\tTotal Number of Academic Advisors | " << aaCount << "\tTotal Number of Courses | " << courseCount << endl << endl;
     std::cout << "======{ Menu }======" << endl << endl;

@@ -583,6 +583,8 @@ What identifier would you like to provide?
 
 ================ { Menue } ================)";
 
+    std::cout << endl << endl << "Your response: ";
+
     int choice;
     std::cin >> choice;
     
@@ -649,6 +651,9 @@ What identifier would you like to provide?
 
 ================ { Menue } ================)";
 
+
+    std::cout << endl << endl << "Your response: ";
+
     int choice;
     std::cin >> choice;
 
@@ -700,6 +705,9 @@ What identifier would you like to provide?
 2. Course code
 
 ================ { Menue } ================)";
+
+    std::cout << endl << endl << "Your response: ";
+
 
     int choice;
     std::cin >> choice;
@@ -798,7 +806,6 @@ Your response: )";
     case 9:
         std::cout << "Enter academic advisor: ";
         std::cin >> tempInput;
-
         student.setAA(findAAByName(tempInput, academicAdvisors));
         break;
     case 10:
@@ -836,12 +843,14 @@ Your response: )";
         break;
     case 2:
         std::cout << "Enter email: ";
-        std::cin >> tempInput;
+        std::cin.ignore();
+        getline(std::cin, tempInput);
         aa.setEmail(tempInput);
         break;
     case 3:
         std::cout << "Enter phone number: ";
-        std::cin >> tempInput;
+        std::cin.ignore();
+        getline(std::cin, tempInput);
         aa.setPhoneNum(tempInput);
     default:
         std::cout << "Invalid choice." << endl;

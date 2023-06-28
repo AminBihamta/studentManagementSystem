@@ -1,5 +1,3 @@
-// TODO Write a text when user choose update, 1
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -232,12 +230,18 @@ int actorSelector() {
     std::cout << "2. Academic Advisor Record" << endl;
     std::cout << "3. Course Record" << endl;
 
-    std::cout << endl << "========={ Menu }=========" << endl;
+    std::cout << endl << "========={ Menu }=========" << endl << endl;
 
-    std::cout << endl << "Your response: ";
-
+L3:
+    std::cout << "Please choose an option: ";
 
     std::cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > 3) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L3;
+    }
     return choice;
 }
 
@@ -581,12 +585,18 @@ What identifier would you like to provide?
 3. Matric number
 4. Email
 
-================ { Menue } ================)";
-
-    std::cout << endl << endl << "Your response: ";
+================ { Menue } ================)" << endl << endl;
+L4:
+    std::cout << "Please choose an option: ";
 
     int choice;
     std::cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > 4) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L4;
+    }
     
     if (choice == 1) {
         std::cout << endl << "Enter student name: ";
@@ -649,13 +659,19 @@ What identifier would you like to provide?
 2. Email
 3. Phone number
 
-================ { Menue } ================)";
+================ { Menue } ================)" << endl << endl;
 
-
-    std::cout << endl << endl << "Your response: ";
+L5:
+    std::cout << "Please choose an option: ";
 
     int choice;
     std::cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > 3) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L5;
+    }
 
     if (choice == 1) {
         std::cout << endl << "Enter academic advisor's name: ";
@@ -704,13 +720,19 @@ What identifier would you like to provide?
 1. Course name
 2. Course code
 
-================ { Menue } ================)";
-
-    std::cout << endl << endl << "Your response: ";
+================ { Menue } ================)" << endl << endl;
+L6:
+    std::cout << "Please choose an option: ";
 
 
     int choice;
     std::cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > 2) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L6;
+    }
 
     if (choice == 1) {
         std::cout << endl << "Enter course name: ";
@@ -756,10 +778,18 @@ Which information would you like to update?
 10. CGPA
 
 ================= { Menu } =================
-
-Your response: )";
-
+)";
+L7:
+    std::cout << "Please choose an option: ";
     std::cin >> choice;
+
+    if (std::cin.fail() || choice < 1 || choice > 10) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L7;
+    }
+
     string tempInput;
 
     switch (choice) {
@@ -828,10 +858,19 @@ Which information would you like to update?
 3. Phone Number
 
 ================= { Menu } =================
-
-Your response: )";
+)";
+L8:
+    std::cout << "Please choose an option: ";
 
     std::cin >> choice;
+
+    if (std::cin.fail() || choice < 1 || choice > 3) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L8;
+    }
+
     string tempInput;
 
     switch (choice) {
@@ -868,10 +907,18 @@ Which information would you like to update?
 2. Course code
 
 ================= { Menu } =================
-
-Your response: )";
-
+)";
+L9:
+    std::cout << "Please choose an option: ";
     std::cin >> choice;
+
+    if (std::cin.fail() || choice < 1 || choice > 2) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L9;
+    }
+
     string tempInput;
 
     switch (choice) {
@@ -979,11 +1026,18 @@ int main()
     std::cout << "2. Update Record" << endl;
     std::cout << "3. Create a record" << endl;
     std::cout << "4. Delete a record" << endl;
-    std::cout << endl << "======{ Menu }======" << endl;
+    std::cout << endl << "======{ Menu }======" << endl << endl;
 
-    std::cout << endl << "Your response: ";
-
+L1:
+    std::cout << "Choose an option: "; 
     std::cin >> choice;
+
+    if (std::cin.fail() || choice < 1 || choice > 4) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L1;
+    }
 
     if (choice == 1) {
         printSMS();
@@ -1022,10 +1076,16 @@ int main()
 
     std::cout << "Would you like to exit the program?" << endl;
     std::cout << "1. Yes" << endl;
-    std::cout << "2. No" << endl;
-    std::cout << endl << "Your response: ";
-
+    std::cout << "2. No" << endl << endl;
+L2:
+    std::cout << "Please choose an option: ";
     std::cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > 2) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L2;
+    }
     if (choice != 1)
         main();
 }

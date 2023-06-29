@@ -1,3 +1,4 @@
+// TODO Implement delete method
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -1001,6 +1002,46 @@ void updateDatabase(vector<Course>& courses) {
     }
 }
 
+void deleteRecord(int recordIndex, vector<Student>& students) {
+    cout << "Are you sure you would like to delete this record?" << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl;
+    int choice;
+    cin >> choice;
+    if (choice == 1)
+        students.erase(students.begin() + recordIndex);
+    studentCount--;
+    updateDatabase(students);
+    cout << endl << "Record successfully deleted!" << endl << endl;
+};
+
+void deleteRecord(int recordIndex, vector<Course>& courses) {
+    cout << "Are you sure you would like to delete this record?" << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl;
+    int choice;
+    cin >> choice;
+    if (choice == 1)
+        courses.erase(courses.begin() + recordIndex);
+    courseCount--;
+    updateDatabase(courses);
+    cout << endl << "Record successfully deleted!" << endl << endl;
+};
+
+void deleteRecord(int recordIndex, vector<AA>& academicAdvisors) {
+    cout << "Are you sure you would like to delete this record?" << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl;
+    int choice;
+    cin >> choice;
+    if (choice == 1)
+        academicAdvisors.erase(academicAdvisors.begin() + recordIndex);
+    aaCount--;
+    updateDatabase(academicAdvisors);
+    cout << endl << "Record successfully deleted!" << endl << endl;
+};
+
+
 
 int main()
 {
@@ -1072,6 +1113,14 @@ L1:
         addRecord(tempChoice, students, academicAdvisors, courses);
     }
     else {
+        printSMS();
+        int tempChoice = actorSelector();
+        switch (tempChoice) {
+        case 1:
+            currentRecord = findRecord(students);
+            printRecord(students[currentRecord]);
+            deleteRecord(currentRecord, students);
+        }
     }
 
     std::cout << "Would you like to exit the program?" << endl;

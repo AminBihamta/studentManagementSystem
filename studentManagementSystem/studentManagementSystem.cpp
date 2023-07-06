@@ -1,4 +1,3 @@
-// TODO Input correction for find record
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,6 +6,7 @@
 #include "Student.h"
 #include "Course.h"
 #include <vector>
+#include <thread>
 
 #include <iomanip>
 using namespace std;
@@ -575,6 +575,7 @@ void printRecord(Course course) {
 }
 
 int findRecord(vector<Student> students) {
+L0:
     system("cls");
     printSMS();
     std::cout << "================ { Menue } ================\n\n";
@@ -647,9 +648,20 @@ L4:
         }
     } 
 
+    cout << endl << "No record found" << endl;
+    cout << "Refreshing" << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        cout << ". ";
+    }
+
+    goto L0;
 }
 
 int findRecord(vector<AA> aas) {
+L0:
     system("cls");
     printSMS();
     std::cout << "================ { Menue } ================\n\n";
@@ -708,9 +720,21 @@ L5:
             }
         }
     }
+
+    cout << endl << "No record found" << endl;
+    cout << "Refreshing" << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        cout << ". ";
+    }
+
+    goto L0;
 }
 
 int findRecord(vector<Course> courses) {
+L0:
     system("cls");
     printSMS();
     std::cout << "================ { Menue } ================\n\n";
@@ -756,6 +780,17 @@ L6:
             }
         }
     }
+
+    cout << endl << "No record found" << endl;
+    cout << "Refreshing" << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        cout << ". ";
+    }
+
+    goto L0;
 }
 
 
@@ -996,6 +1031,7 @@ void updateDatabase(vector<Course>& courses) {
 
 int main()
 {
+L0:
     printSMS();
 
     int choice = 0;
@@ -1006,11 +1042,10 @@ int main()
     vector<AA> academicAdvisors;
     vector<Course> courses;
     vector<Student> students;
-   
+
     readDatabase(academicAdvisors);
     readDatabase(courses);
     readDatabase(students, academicAdvisors, courses);
-
     std::cout << "Total Number of Students | " << studentCount << "\tTotal Number of Academic Advisors | " << aaCount << "\tTotal Number of Courses | " << courseCount << endl << endl;
     std::cout << "======{ Menu }======" << endl << endl;
     std::cout << "Choose an option" << endl;
@@ -1021,7 +1056,7 @@ int main()
     std::cout << endl << "======{ Menu }======" << endl << endl;
 
 L1:
-    std::cout << "Choose an option: "; 
+    std::cout << "Choose an option: ";
     std::cin >> choice;
 
     if (std::cin.fail() || choice < 1 || choice > 4) {

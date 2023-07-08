@@ -73,7 +73,7 @@ void findStudentCount() {
         }
         lineCount++;
         inputFile.close();
-        studentCount = lineCount / 23;
+        studentCount = lineCount / 21;
     }
     else {
         std::cout << "Unable to open student database." << endl;
@@ -369,19 +369,40 @@ L6:
     }
 
     outputFile2 << endl;
-    outputFile2 << students[studentCount + 1].getName() << endl;
-    outputFile2 << students[studentCount + 1].getEmail() << endl;
-    outputFile2 << students[studentCount + 1].getPhoneNum() << endl;
-    outputFile2 << students[studentCount + 1].getMatricNum() << endl;
-    outputFile2 << students[studentCount + 1].getDateOfBirth() << endl;
-    outputFile2 << students[studentCount + 1].getNationality() << endl;
-    outputFile2 << students[studentCount + 1].getPassNum() << endl;
-    outputFile2 << students[studentCount + 1].getSemester() << endl;
-    outputFile2 << students[studentCount + 1].getAAName() << endl;
-    outputFile2 << students[studentCount + 1].getCGPA() << endl;
+    outputFile2 << students[studentCount].getName() << endl;
+    outputFile2 << students[studentCount].getEmail() << endl;
+    outputFile2 << students[studentCount].getPhoneNum() << endl;
+    outputFile2 << students[studentCount].getMatricNum() << endl;
+    outputFile2 << students[studentCount].getDateOfBirth() << endl;
+    outputFile2 << students[studentCount].getNationality() << endl;
+    outputFile2 << students[studentCount].getPassNum() << endl;
+    outputFile2 << students[studentCount].getSemester() << endl;
+    outputFile2 << students[studentCount].getAAName() << endl;
+
+    outputFile2 << students[studentCount].getCourse1Name() << endl;
+    outputFile2 << students[studentCount].getCourse1Code() << endl;
+
+    outputFile2 << students[studentCount].getCourse2Name() << endl;
+    outputFile2 << students[studentCount].getCourse2Code() << endl;
+
+    outputFile2 << students[studentCount].getCourse3Name() << endl;
+    outputFile2 << students[studentCount].getCourse3Code() << endl;
+
+    outputFile2 << students[studentCount].getCourse4Name() << endl;
+    outputFile2 << students[studentCount].getCourse4Code() << endl;
+
+    outputFile2 << students[studentCount].getCourse5Name() << endl;
+    outputFile2 << students[studentCount].getCourse5Code() << endl;
+
+    outputFile2 << students[studentCount].getCourse6Name() << endl;
+    outputFile2 << students[studentCount].getCourse6Code() << endl;
+
+    outputFile2 << students[studentCount].getCGPA() << endl;
 
     inputFile2.close();
     outputFile2.close();
+
+    cout << endl << "Record Successfully Created!" << endl;
 }
 
 void addRecord(vector<AA> academicAdvisors) {

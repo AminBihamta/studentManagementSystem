@@ -21,4 +21,3 @@ Course6
 CourseCode6
 2
 
-

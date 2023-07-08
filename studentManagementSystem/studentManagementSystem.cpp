@@ -1,3 +1,4 @@
+// Implement AA input handling for add student
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -17,15 +18,13 @@ int courseCount = 0;
 int currentRecord = 0;
 
 AA findAAByName(string aaName, vector<AA> academicAdvisors) {
-    int currentAA = 0;
     for (int j = 0; j < academicAdvisors.size(); j++) {
         if (aaName == academicAdvisors[j].getName()) {
-            currentAA = j;
+            return academicAdvisors[j];
             break;
         }
     }
-
-    return academicAdvisors[currentAA];
+    return AA("NULL", "NULL", "NULL");
 }
 
 void findAACount() {
@@ -127,6 +126,7 @@ Course findCourseByName(const vector<Course>& courses, const string& courseName)
             return courses[i];
         }
     }
+    return Course("NULL", "NULL");
 }
 
 void readDatabase(vector<Student>& students, vector<AA>& academicAdvisors, vector<Course>& courses) {
@@ -278,27 +278,69 @@ void addRecord(vector<Student>& students, vector<Course> courses, vector<AA> aca
     std::cin >> semester;
 
     std::cout << "Enter academic advisor: ";
+L0:
     std::cin >> aa;
 
+    AA academicAdvisor = findAAByName(aa, academicAdvisors);
+
+    if (academicAdvisor.getName() == "NULL") {
+        cout << "Academic Advisor not found! please enter a valid acedmic advisor name: ";
+        goto L0;
+    }
+L1:
     cout << "Enter course name: ";
     getline(cin, _course1);
+    course1 = findCourseByName(courses, _course1);
+    if (course1.getCourseName() == "NULL") {
+        cout << "Course not found! ";
+        goto L1;
+    }
+
+L2:
     cout << "Enter course name: ";
     getline(cin, _course2);
+    course2 = findCourseByName(courses, _course2);
+    if (course2.getCourseName() == "NULL") {
+        cout << "Course not found! ";
+        goto L2;
+    }
+
+L3:
     cout << "Enter course name: ";
     getline(cin, _course3);
+    course3 = findCourseByName(courses, _course3);
+    if (course3.getCourseName() == "NULL") {
+        cout << "Course not found! ";
+        goto L3;
+    }
+
+L4:
     cout << "Enter course name: ";
     getline(cin, _course4);
+    course4 = findCourseByName(courses, _course4);
+    if (course4.getCourseName() == "NULL") {
+        cout << "Course not found! ";
+        goto L4;
+    }
+
+L5:
     cout << "Enter course name: ";
     getline(cin, _course5);
+    course5 = findCourseByName(courses, _course5);
+    if (course5.getCourseName() == "NULL") {
+        cout << "Course not found! ";
+        goto L5;
+    }
+
+L6:
     cout << "Enter course name: ";
     getline(cin, _course6);
-
-    course1 = findCourseByName(courses, _course1);
-    course2 = findCourseByName(courses, _course2);
-    course3 = findCourseByName(courses, _course3);
-    course4 = findCourseByName(courses, _course4);
-    course5 = findCourseByName(courses, _course5);
     course6 = findCourseByName(courses, _course6);
+    if (course6.getCourseName() == "NULL") {
+        cout << "Course not found! ";
+        goto L6;
+    }
+
 
     std::cout << "Enter CGPA: ";
     std::cin >> cgpa;
@@ -307,7 +349,7 @@ void addRecord(vector<Student>& students, vector<Course> courses, vector<AA> aca
     ofstream outputFile("tempText.txt");
 
     Student tempStudent(name, email, phoneNum, matricNum, stoi(dateOfBirth), nationality, passNum, stoi(semester),
-        findAAByName(aa, academicAdvisors), course1, course2, course3, course4, course5, course6, stof(cgpa));
+        academicAdvisor, course1, course2, course3, course4, course5, course6, stof(cgpa));
     students.push_back(tempStudent);
 
     string line;

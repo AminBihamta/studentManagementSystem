@@ -299,7 +299,7 @@ L0:
     AA academicAdvisor = findAAByName(aa, academicAdvisors);
 
     if (academicAdvisor.getName() == "NULL") {
-        cout << "Academic Advisor not found! please enter a valid acedmic advisor name: ";
+        cout << "Academic Advisor not found! please enter a valid acedmic advisor name from the database: ";
         goto L0;
     }
 L1:

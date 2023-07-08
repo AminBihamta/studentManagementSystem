@@ -264,8 +264,23 @@ void addRecord(vector<Student>& students, vector<Course> courses, vector<AA> aca
     std::cout << "Enter matric number: ";
     std::cin >> matricNum;
 
-    std::cout << "Enter date of birth: ";
+L7:
+    std::cout << "Enter date of birth (e.g. 20231125): ";
     std::cin >> dateOfBirth;
+
+    bool isNumeric = true;
+    for (char c : dateOfBirth) {
+        if (!std::isdigit(c)) {
+            isNumeric = false;
+            break;
+        }
+    }
+
+    if (isNumeric == false) {
+        cout << "In correct format. "; 
+        goto L7;
+    }
+
 
     std::cout << "Enter nationallity: ";
     std::cin >> nationality;
@@ -541,7 +556,7 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
             std::cout << students[i].getCourse6Name() << endl;
             std::cout << students[i].getCourse6Code() << endl;
 
-            std::cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl;
+            std::cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl << endl;
         }
     }
     else if (choice == 2) {
@@ -1052,8 +1067,8 @@ void updateDatabase(vector<Student> students) {
         outputFile << students[i].getCGPA() << endl;
         outputFile << endl;
 
-        cout << "Record successfully updated!";
     }
+        cout << endl << "Record successfully updated!";
 }
 
 void updateDatabase(vector<AA>& aas) {

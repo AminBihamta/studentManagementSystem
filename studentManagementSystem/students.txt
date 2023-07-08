@@ -1,69 +1,23 @@
-Mohammad Amin Bihamta Toosi New
-bihamta@graduate.utm.my
-+6018242591
-A22Mj4004
+Mohammad Amin Bihamta Toosi
+bihamta@gradaute.utm.my
++60182425901
+A22MJ4004
 20020713
 Iranian
-samplePassNum
+AminPassportNumber
 2
-SampleAAName1
-Course1
-CourseCode1
-Course2
-CourseCode2
-Course3
-CourseCode3
-Course4
-CourseCode4
-Course5
-CourseCode5
-Course6
-CourseCode6
-2
+Prof. Madya Ts. Dr. Masitah Bt Ghazali
+Programming Technique 2
+SECJ1023
+Software Engineering
+SECJ2203
+Computational Mathematics
+SECI1113
+Probability and Statistical Data Analysis
+SECI1143
+Computer Orgaanization and Architecture
+SECR1033
+Value and Identity
+ULRS1012
+4
 
-4
-4
-4
-4
-4
-4
-4
-4
-SampleAAName1
-Course1
-CourseCode1
-Course1
-CourseCode1
-Course1
-CourseCode1
-Course1
-CourseCode1
-Course1
-CourseCode1
-Course1
-CourseCode1
-2.1
-
-
-5
-5
-5
-5
-5
-5
-5
-5
-SampleAAName1
-Course2
-CourseCode2
-Course2
-CourseCode2
-Course2
-CourseCode2
-Course2
-CourseCode2
-Course2
-CourseCode2
-Course2
-CourseCode2
-2.1

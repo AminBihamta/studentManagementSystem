@@ -1,21 +1,17 @@
-Course1
-CourseCode1
+Programming Technique 2
+SECJ1023
 
-Course2
-CourseCode2
+Software Engineering
+SECJ2203
 
-Course3
-CourseCode3
+Computational Mathematics
+SECI1113
 
-Course4
-CourseCode4
+Probability and Statistical Data Analysis
+SECI1143
 
-Course5
-CourseCode5
+Computer Orgaanization and Architecture
+SECR1033
 
-Course6
-CourseCode6
-
-CourseName7
-CourseCode7
-
+Value and Identity
+ULRS1012

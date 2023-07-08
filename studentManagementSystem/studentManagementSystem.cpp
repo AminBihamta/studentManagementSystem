@@ -265,7 +265,7 @@ void addRecord(vector<Student>& students, vector<Course> courses, vector<AA> aca
     std::cin >> matricNum;
 
 L7:
-    std::cout << "Enter date of birth (e.g. 20231125): ";
+    std::cout << "Enter date of birth (YYYYMMDD): ";
     std::cin >> dateOfBirth;
 
     bool isNumeric = true;
@@ -293,7 +293,8 @@ L7:
 
     std::cout << "Enter academic advisor: ";
 L0:
-    std::cin >> aa;
+    cin.ignore();
+    getline(std::cin, aa);
 
     AA academicAdvisor = findAAByName(aa, academicAdvisors);
 
@@ -302,8 +303,7 @@ L0:
         goto L0;
     }
 L1:
-    cout << "Enter course name: ";
-    cin.ignore();
+    cout << "Enter first course name: ";
     getline(cin, _course1);
     course1 = findCourseByName(courses, _course1);
     if (course1.getCourseName() == "NULL") {
@@ -312,7 +312,7 @@ L1:
     }
 
 L2:
-    cout << "Enter course name: ";
+    cout << "Enter second course name: ";
     getline(cin, _course2);
     course2 = findCourseByName(courses, _course2);
     if (course2.getCourseName() == "NULL") {
@@ -321,7 +321,7 @@ L2:
     }
 
 L3:
-    cout << "Enter course name: ";
+    cout << "Enter third course name: ";
     getline(cin, _course3);
     course3 = findCourseByName(courses, _course3);
     if (course3.getCourseName() == "NULL") {
@@ -330,7 +330,7 @@ L3:
     }
 
 L4:
-    cout << "Enter course name: ";
+    cout << "Enter fourth course name: ";
     getline(cin, _course4);
     course4 = findCourseByName(courses, _course4);
     if (course4.getCourseName() == "NULL") {
@@ -339,7 +339,7 @@ L4:
     }
 
 L5:
-    cout << "Enter course name: ";
+    cout << "Enter fifth course name: ";
     getline(cin, _course5);
     course5 = findCourseByName(courses, _course5);
     if (course5.getCourseName() == "NULL") {
@@ -348,7 +348,7 @@ L5:
     }
 
 L6:
-    cout << "Enter course name: ";
+    cout << "Enter sixth course name: ";
     getline(cin, _course6);
     course6 = findCourseByName(courses, _course6);
     if (course6.getCourseName() == "NULL") {
@@ -526,7 +526,7 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
     printSMS();
     if (choice == 1) {
         for (int i = 0; i < studentCount; i++) {
-            std::cout << "Student " << i + 1 << ":\n";
+            std::cout << endl << "Student " << i + 1 << ":\n";
             std::cout << "Name: " << students[i].getName() << endl;
             std::cout << "Email: " << students[i].getEmail() << endl;
             std::cout << "Phone Number: " << students[i].getPhoneNum() << endl;
@@ -538,30 +538,24 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
             std::cout << "Academic Advisor: " << students[i].getAAName() << endl;
             std::cout << "Courses: " << endl;
 
-            std::cout << students[i].getCourse1Name() << endl;
-            std::cout << students[i].getCourse1Code() << endl;
+            std::cout << students[i].getCourse1Name() << " | " << students[i].getCourse1Code() << endl;
 
-            std::cout << students[i].getCourse2Name() << endl;
-            std::cout << students[i].getCourse2Code() << endl;
+            std::cout << students[i].getCourse2Name() << " | " << students[i].getCourse2Code() << endl;
 
-            std::cout << students[i].getCourse3Name() << endl;
-            std::cout << students[i].getCourse3Code() << endl;
+            std::cout << students[i].getCourse3Name() << " | " << students[i].getCourse3Code() << endl;
 
-            std::cout << students[i].getCourse4Name() << endl;
-            std::cout << students[i].getCourse4Code() << endl;
+            std::cout << students[i].getCourse4Name() << " | " << students[i].getCourse4Code() << endl;
 
-            std::cout << students[i].getCourse5Name() << endl;
-            std::cout << students[i].getCourse5Code() << endl;
+            std::cout << students[i].getCourse5Name() << " | " << students[i].getCourse5Code() << endl;
 
-            std::cout << students[i].getCourse6Name() << endl;
-            std::cout << students[i].getCourse6Code() << endl;
+            std::cout << students[i].getCourse6Name() << " | " << students[i].getCourse6Code() << endl;
 
-            std::cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl << endl;
+            std::cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl;
         }
     }
     else if (choice == 2) {
         for (int i = 0; i < aaCount; i++) {
-            std::cout << "Academic Advisor " << i + 1 << ":\n";
+            std::cout << endl << "Academic Advisor " << i + 1 << ":\n";
             std::cout << "Name: " << aas[i].getName() << endl;
             std::cout << "Email: " << aas[i].getEmail() << endl;
             std::cout << "Phone number: " << aas[i].getPhoneNum() << endl;
@@ -570,7 +564,7 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
     else {
         for (int i = 0; i < courseCount; i++)
         {
-            std::cout << "Course " << i + 1 << ":\n";
+            std::cout << endl << "Course " << i + 1 << ":\n";
             std::cout << "Name: " << courses[i].getCourseName() << endl;
             std::cout << "code: " << courses[i].getCourseCode() << endl;
         }
@@ -591,23 +585,17 @@ void printRecord(Student student) {
     std::cout << "Semester: " << student.getSemester() << endl;
     std::cout << "Academic Advisor: " << student.getAAName() << endl;
 
-    std::cout << student.getCourse1Name() << endl;
-    std::cout << student.getCourse1Code() << endl;
+    std::cout << student.getCourse1Name() << " | " << student.getCourse1Code() << endl;
 
-    std::cout << student.getCourse2Name() << endl;
-    std::cout << student.getCourse2Code() << endl;
+    std::cout << student.getCourse2Name() << " | " << student.getCourse2Code() << endl;
 
-    std::cout << student.getCourse3Name() << endl;
-    std::cout << student.getCourse3Code() << endl;
+    std::cout << student.getCourse3Name() << " | " << student.getCourse3Code() << endl;
 
-    std::cout << student.getCourse4Name() << endl;
-    std::cout << student.getCourse4Code() << endl;
+    std::cout << student.getCourse4Name() << " | " << student.getCourse4Code() << endl;
 
-    std::cout << student.getCourse5Name() << endl;
-    std::cout << student.getCourse5Code() << endl;
+    std::cout << student.getCourse5Name() << " | " << student.getCourse5Code() << endl;
 
-    std::cout << student.getCourse5Name() << endl;
-    std::cout << student.getCourse5Code() << endl;
+    std::cout << student.getCourse6Name() << " | " << student.getCourse6Code() << endl;
 
     std::cout << fixed << setprecision(2) << "CGPA: " << student.getCGPA() << endl;
     std::cout << endl;
@@ -1074,7 +1062,7 @@ void updateDatabase(vector<Student> students) {
 void updateDatabase(vector<AA>& aas) {
     ofstream outputFile("aa.txt");
 
-    for (int i = 0; i < courseCount; i++)
+    for (int i = 0; i < aaCount; i++)
     {
         outputFile << aas[i].getName() << endl;
         outputFile << aas[i].getEmail() << endl;
@@ -1082,7 +1070,7 @@ void updateDatabase(vector<AA>& aas) {
         outputFile << endl;
     }
 
-    cout << "Record successfully updated!";
+    cout << endl << "Record successfully updated!";
 }
 
 void updateDatabase(vector<Course>& courses) {

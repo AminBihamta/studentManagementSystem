@@ -7,6 +7,7 @@
 #include "Student.h"
 #include "Course.h"
 #include <vector>
+#include <thread>
 
 #include <iomanip>
 using namespace std;
@@ -428,17 +429,16 @@ void addRecord(vector<Course> courses) {
 
 void printSMS() {
     system("cls");
-    std::cout << R"(
- ________  _____ ______   ________         
-|\   ____\|\   _ \  _   \|\   ____\        
-\ \  \___|\ \  \\\__\ \  \ \  \___|_       
- \ \_____  \ \  \\|__| \  \ \_____  \      
-  \|____|\  \ \  \    \ \  \|____|\  \     
-    ____\_\  \ \__\    \ \__\____\_\  \    
-   |\_________\|__|     \|__|\_________\   
-   \|_________|             \|_________|   
+    std::cout << " ________  _____ ______   ________         " << std::endl;
+    std::cout << "|\\   ____\\|\\   _ \\  _   \\|\\   ____\\        " << std::endl;
+    std::cout << "\\ \\  \\___|\\ \\  \\\\\\__\\ \\  \\ \\  \\___|_       " << std::endl;
+    std::cout << " \\ \\_____  \\ \\  \\\\|__| \\  \\ \\_____  \\      " << std::endl;
+    std::cout << "  \\|____|\\  \\ \\  \\    \\ \\  \\|____|\\  \\     " << std::endl;
+    std::cout << "    ____\\_\\  \\ \\__\\    \\ \\__\\____\\_\\  \\    " << std::endl;
+    std::cout << "   |\\_________\\|__|     \\|__|\\_________\\   " << std::endl;
+    std::cout << "   \\|_________|             \\|_________|   " << std::endl;
+    std::cout << std::endl;
 
-)" << endl;
 }
 
 void addRecord(int choice, vector<Student>& students, vector<AA>& academicAdvisors, vector<Course> &courses) {
@@ -576,17 +576,18 @@ void printRecord(Course course) {
 }
 
 int findRecord(vector<Student> students) {
+L0:
     system("cls");
     printSMS();
-    std::cout << R"(================ { Menue } ================
+    std::cout << "================ { Menue } ================\n\n";
+    std::cout << "What identifier would you like to provide?\n";
+    std::cout << "1. Name\n";
+    std::cout << "2. Passport / IC number\n";
+    std::cout << "3. Matric number\n";
+    std::cout << "4. Email\n\n";
+    std::cout << "================ { Menue } ================\n";
+    std::cout << std::endl;
 
-What identifier would you like to provide?
-1. Name
-2. Passport / IC number
-3. Matric number
-4. Email
-
-================ { Menue } ================)" << endl << endl;
 L4:
     std::cout << "Please choose an option: ";
 
@@ -648,19 +649,29 @@ L4:
         }
     } 
 
+    cout << endl << "No record found" << endl;
+    cout << "Refreshing" << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        cout << ". ";
+    }
+
+    goto L0;
 }
 
 int findRecord(vector<AA> aas) {
+L0:
     system("cls");
     printSMS();
-    std::cout << R"(================ { Menue } ================
-
-What identifier would you like to provide?
-1. Name
-2. Email
-3. Phone number
-
-================ { Menue } ================)" << endl << endl;
+    std::cout << "================ { Menue } ================\n\n";
+    std::cout << "What identifier would you like to provide?\n";
+    std::cout << "1. Name\n";
+    std::cout << "2. Email\n";
+    std::cout << "3. Phone number\n\n";
+    std::cout << "================ { Menue } ================\n";
+    std::cout << std::endl;
 
 L5:
     std::cout << "Please choose an option: ";
@@ -710,18 +721,29 @@ L5:
             }
         }
     }
+
+    cout << endl << "No record found" << endl;
+    cout << "Refreshing" << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        cout << ". ";
+    }
+
+    goto L0;
 }
 
 int findRecord(vector<Course> courses) {
+L0:
     system("cls");
     printSMS();
-    std::cout << R"(================ { Menue } ================
-
-What identifier would you like to provide?
-1. Course name
-2. Course code
-
-================ { Menue } ================)" << endl << endl;
+    std::cout << "================ { Menue } ================\n\n";
+    std::cout << "What identifier would you like to provide?\n";
+    std::cout << "1. Course name\n";
+    std::cout << "2. Course code\n\n";
+    std::cout << "================ { Menue } ================\n";
+    std::cout << std::endl;
 L6:
     std::cout << "Please choose an option: ";
 
@@ -759,27 +781,36 @@ L6:
             }
         }
     }
+
+    cout << endl << "No record found" << endl;
+    cout << "Refreshing" << endl;
+
+    for (int i = 0; i < 6; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+        cout << ". ";
+    }
+
+    goto L0;
 }
 
 
 Student updateRecord(Student student, vector<AA> academicAdvisors) {
     int choice = 0;
-    std::cout << R"(================= { Menu } =================
-
-Which information would you like to update?
-1. Name
-2. Email
-3. Phone Number
-4. Matriculation Number
-5. Date of Birth
-6. Nationality
-7. Passport Number
-8. Semester
-9. Academic Advisor
-10. CGPA
-
-================= { Menu } =================
-)";
+    std::cout << "================= { Menu } =================\n\n";
+    std::cout << "Which information would you like to update?\n";
+    std::cout << "1. Name\n";
+    std::cout << "2. Email\n";
+    std::cout << "3. Phone Number\n";
+    std::cout << "4. Matriculation Number\n";
+    std::cout << "5. Date of Birth\n";
+    std::cout << "6. Nationality\n";
+    std::cout << "7. Passport Number\n";
+    std::cout << "8. Semester\n";
+    std::cout << "9. Academic Advisor\n";
+    std::cout << "10. CGPA\n\n";
+    std::cout << "================= { Menu } =================\n";
+    std::cout << std::endl;
 L7:
     std::cout << "Please choose an option: ";
     std::cin >> choice;
@@ -851,15 +882,13 @@ L7:
 
 AA updateRecord(AA aa) {
     int choice = 0;
-    std::cout << R"(================= { Menu } =================
-
-Which information would you like to update?
-1. Name
-2. Email
-3. Phone Number
-
-================= { Menu } =================
-)";
+    std::cout << "================= { Menu } =================\n\n";
+    std::cout << "Which information would you like to update?\n";
+    std::cout << "1. Name\n";
+    std::cout << "2. Email\n";
+    std::cout << "3. Phone Number\n\n";
+    std::cout << "================= { Menu } =================\n";
+    std::cout << std::endl;
 L8:
     std::cout << "Please choose an option: ";
 
@@ -901,14 +930,12 @@ L8:
 
 Course updateRecord(Course course) {
     int choice = 0;
-    std::cout << R"(================= { Menu } =================
-
-Which information would you like to update?
-1. Course name
-2. Course code
-
-================= { Menu } =================
-)";
+    std::cout << "================= { Menu } =================\n\n";
+    std::cout << "Which information would you like to update?\n";
+    std::cout << "1. Course name\n";
+    std::cout << "2. Course code\n\n";
+    std::cout << "================= { Menu } =================\n";
+    std::cout << std::endl;
 L9:
     std::cout << "Please choose an option: ";
     std::cin >> choice;
@@ -1045,6 +1072,7 @@ void deleteRecord(int recordIndex, vector<AA>& academicAdvisors) {
 
 int main()
 {
+L0:
     printSMS();
 
     int choice = 0;
@@ -1055,11 +1083,10 @@ int main()
     vector<AA> academicAdvisors;
     vector<Course> courses;
     vector<Student> students;
-   
+
     readDatabase(academicAdvisors);
     readDatabase(courses);
     readDatabase(students, academicAdvisors, courses);
-
     std::cout << "Total Number of Students | " << studentCount << "\tTotal Number of Academic Advisors | " << aaCount << "\tTotal Number of Courses | " << courseCount << endl << endl;
     std::cout << "======{ Menu }======" << endl << endl;
     std::cout << "Choose an option" << endl;
@@ -1070,7 +1097,7 @@ int main()
     std::cout << endl << "======{ Menu }======" << endl << endl;
 
 L1:
-    std::cout << "Choose an option: "; 
+    std::cout << "Choose an option: ";
     std::cin >> choice;
 
     if (std::cin.fail() || choice < 1 || choice > 4) {

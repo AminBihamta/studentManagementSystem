@@ -1,4 +1,3 @@
-// Implement AA input handling for add student
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -402,7 +401,7 @@ L6:
     inputFile2.close();
     outputFile2.close();
 
-    cout << endl << "Record Successfully Created!" << endl;
+    cout << endl << "Record successfully created!";
 }
 
 void addRecord(vector<AA> academicAdvisors) {
@@ -441,12 +440,14 @@ void addRecord(vector<AA> academicAdvisors) {
     }
 
     outputFile2 << endl;
-    outputFile2 << academicAdvisors[aaCount + 1].getName() << endl;
-    outputFile2 << academicAdvisors[aaCount + 1].getEmail() << endl;
-    outputFile2 << academicAdvisors[aaCount + 1].getPhoneNum() << endl;
+    outputFile2 << academicAdvisors[aaCount].getName() << endl;
+    outputFile2 << academicAdvisors[aaCount].getEmail() << endl;
+    outputFile2 << academicAdvisors[aaCount].getPhoneNum() << endl;
 
     inputFile2.close();
     outputFile2.close();
+
+    cout << endl << "Record Successfully Created!";
 }
 
 void addRecord(vector<Course> courses) {
@@ -483,11 +484,13 @@ void addRecord(vector<Course> courses) {
     }
 
     outputFile2 << endl;
-    outputFile2 << courses[courseCount + 1].getCourseName() << endl;
-    outputFile2 << courses[courseCount + 1].getCourseCode() << endl;
+    outputFile2 << courses[courseCount].getCourseName() << endl;
+    outputFile2 << courses[courseCount].getCourseCode() << endl;
 
     inputFile2.close();
     outputFile2.close();
+
+    cout << endl << "Record Successfully Created!";
 }
 
 void printSMS() {
@@ -502,21 +505,6 @@ void printSMS() {
     std::cout << "   \\|_________|             \\|_________|   " << std::endl;
     std::cout << std::endl;
 
-}
-
-void addRecord(int choice, vector<Student>& students, vector<AA>& academicAdvisors, vector<Course> &courses) {
-    if (choice == 1) {
-        printSMS();
-        addRecord(students, courses, academicAdvisors);
-    }
-    else if (choice == 2) {
-        printSMS();
-        addRecord(academicAdvisors);
-    }
-    else {
-        printSMS();
-        addRecord(courses);
-    }
 }
 
 void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Course> courses) {
@@ -554,7 +542,6 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
             std::cout << students[i].getCourse6Code() << endl;
 
             std::cout << fixed << setprecision(2) << "CGPA: " << students[i].getCGPA() << endl;
-            std::cout << endl;
         }
     }
     else if (choice == 2) {
@@ -563,7 +550,6 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
             std::cout << "Name: " << aas[i].getName() << endl;
             std::cout << "Email: " << aas[i].getEmail() << endl;
             std::cout << "Phone number: " << aas[i].getPhoneNum() << endl;
-            std::cout << endl;
         }
     }
     else {
@@ -572,7 +558,6 @@ void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Co
             std::cout << "Course " << i + 1 << ":\n";
             std::cout << "Name: " << courses[i].getCourseName() << endl;
             std::cout << "code: " << courses[i].getCourseCode() << endl;
-            std::cout << endl;
         }
     }
 }
@@ -1066,6 +1051,8 @@ void updateDatabase(vector<Student> students) {
         outputFile << students[i].getCourse6Code() << endl;
         outputFile << students[i].getCGPA() << endl;
         outputFile << endl;
+
+        cout << "Record successfully updated!";
     }
 }
 
@@ -1079,6 +1066,8 @@ void updateDatabase(vector<AA>& aas) {
         outputFile << aas[i].getPhoneNum() << endl;
         outputFile << endl;
     }
+
+    cout << "Record successfully updated!";
 }
 
 void updateDatabase(vector<Course>& courses) {
@@ -1090,6 +1079,8 @@ void updateDatabase(vector<Course>& courses) {
         outputFile << courses[i].getCourseCode() << endl;
         outputFile << endl;
     }
+
+    cout << "Record successfully updated!";
 }
 
 void deleteRecord(int recordIndex, vector<Student>& students) {
@@ -1200,7 +1191,18 @@ L1:
     else if (choice == 3) {
         printSMS();
         int tempChoice = actorSelector();
-        addRecord(tempChoice, students, academicAdvisors, courses);
+        printSMS();
+        switch (tempChoice) {
+        case 1:
+            addRecord(students, courses, academicAdvisors);
+            break;
+        case 2:
+            addRecord(academicAdvisors);
+            break;
+        case 3:
+            addRecord(courses);
+            break;
+        }
     }
     else {
         printSMS();
@@ -1222,7 +1224,7 @@ L1:
         }
     }
 
-    std::cout << "Would you like to exit the program?" << endl;
+    std::cout << endl << endl << "Would you like to exit the program?" << endl;
     std::cout << "1. Yes" << endl;
     std::cout << "2. No" << endl << endl;
 L2:

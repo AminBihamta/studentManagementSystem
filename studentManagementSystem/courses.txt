@@ -13,3 +13,9 @@ CourseCode4
 Course5
 CourseCode5
 
+Course6
+CourseCode6
+
+CourseName7
+CourseCode7
+

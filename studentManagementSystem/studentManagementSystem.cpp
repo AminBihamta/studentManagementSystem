@@ -1210,6 +1210,15 @@ L1:
             currentRecord = findRecord(students);
             printRecord(students[currentRecord]);
             deleteRecord(currentRecord, students);
+        case 2:
+            currentRecord = findRecord(academicAdvisors);
+            printRecord(academicAdvisors[currentRecord]);
+            deleteRecord(currentRecord, academicAdvisors);
+            break;
+        case 3:
+            currentRecord = findRecord(courses);
+            printRecord(courses[currentRecord]);
+            deleteRecord(currentRecord, courses);
         }
     }
 

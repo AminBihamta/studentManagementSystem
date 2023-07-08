@@ -18,15 +18,14 @@ int courseCount = 0;
 int currentRecord = 0;
 
 AA findAAByName(string aaName, vector<AA> academicAdvisors) {
-    int currentAA = 0;
     for (int j = 0; j < academicAdvisors.size(); j++) {
         if (aaName == academicAdvisors[j].getName()) {
-            currentAA = j;
+            return academicAdvisors[j];
             break;
         }
     }
 
-    return academicAdvisors[currentAA];
+    return ;
 }
 
 void findAACount() {
@@ -282,6 +281,7 @@ void addRecord(vector<Student>& students, vector<Course> courses, vector<AA> aca
     std::cin >> aa;
 
     cout << "Enter course name: ";
+    cin.ignore();
     getline(cin, _course1);
     cout << "Enter course name: ";
     getline(cin, _course2);

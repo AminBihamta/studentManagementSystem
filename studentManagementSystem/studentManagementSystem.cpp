@@ -1025,7 +1025,7 @@ L6:
 }
 
 
-Student updateRecord(Student student, vector<AA> academicAdvisors) {
+Student updateRecord(Student student, const vector<AA> academicAdvisors, const vector<Course> courses) {
     int choice = 0;
     std::cout << "================= { Menu } =================\n\n";
     std::cout << "Which information would you like to update?\n";
@@ -1038,7 +1038,13 @@ Student updateRecord(Student student, vector<AA> academicAdvisors) {
     std::cout << "7. Passport Number\n";
     std::cout << "8. Semester\n";
     std::cout << "9. Academic Advisor\n";
-    std::cout << "10. CGPA\n\n";
+    std::cout << "10. First Course\n";
+    std::cout << "11. Second Course\n";
+    std::cout << "12. Third Course\n";
+    std::cout << "13. Fourth Course\n";
+    std::cout << "14. Fifth Course\n";
+    std::cout << "15. Sixth Course\n";
+    std::cout << "16. CGPA\n\n";
     std::cout << "================= { Menu } =================\n";
     std::cout << std::endl;
 L7:
@@ -1101,6 +1107,120 @@ L7:
         student.setAA(findAAByName(tempInput, academicAdvisors));
         break;
     case 10:
+        L1:
+        cout << endl << "Choose user's first course" << endl;
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+        }
+
+        cout << endl << "Your response: ";
+
+        cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > courseCount) {
+            cout << endl << "Invalid input. ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            goto L1;
+        }
+        student.setCourse1(courses[--choice]);
+        break;
+    case 11:
+    L2:
+        cout << endl << "Choose user's second course" << endl;
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+        }
+
+        cout << endl << "Your response: ";
+
+        cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > courseCount) {
+            cout << endl << "Invalid input. ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            goto L2;
+        }
+        student.setCourse2(courses[--choice]);
+        break;
+    case 12:
+    L3:
+        cout << endl << "Choose user's third course" << endl;
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+        }
+
+        cout << endl << "Your response: ";
+
+        cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > courseCount) {
+            cout << endl << "Invalid input. ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            goto L3;
+        }
+        student.setCourse3(courses[--choice]);
+        break;
+    case 13:
+    L4:
+        cout << endl << "Choose user's fourth course" << endl;
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+        }
+
+        cout << endl << "Your response: ";
+
+        cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > courseCount) {
+            cout << endl << "Invalid input. ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            goto L4;
+        }
+        student.setCourse4(courses[--choice]);
+        break;
+    case 14:
+    L5:
+        cout << endl << "Choose user's fifth course" << endl;
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+        }
+
+        cout << endl << "Your response: ";
+
+        cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > courseCount) {
+            cout << endl << "Invalid input. ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            goto L5;
+        }
+        student.setCourse5(courses[--choice]);
+        break;
+    case 15:
+    L6:
+        cout << endl << "Choose user's sixth course" << endl;
+        for (int i = 0; i < courseCount; i++)
+        {
+            cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+        }
+
+        cout << endl << "Your response: ";
+
+        cin >> choice;
+        if (std::cin.fail() || choice < 1 || choice > courseCount) {
+            cout << endl << "Invalid input. ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            goto L6;
+        }
+        student.setCourse6(courses[--choice]);
+        break;
+    case 16:
         std::cout << "Enter CGPA: ";
         std::cin >> tempInput;
         student.setCGPA(stof(tempInput));
@@ -1354,7 +1474,7 @@ L1:
         if (tempChoice == 1) {
             currentRecord = findRecord(students);
             printRecord(students[currentRecord]);
-            students[currentRecord] = updateRecord(students[currentRecord], academicAdvisors);
+            students[currentRecord] = updateRecord(students[currentRecord], academicAdvisors, courses);
             updateDatabase(students);
         }
         else if (tempChoice == 2) {

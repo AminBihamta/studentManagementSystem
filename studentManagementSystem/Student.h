@@ -56,6 +56,14 @@ public:
     void setCGPA(float CGPA);
     void setAA(AA _aa);
 
+    void setCourse1(Course _course);
+    void setCourse2(Course _course);
+    void setCourse3(Course _course);
+    void setCourse4(Course _course);
+    void setCourse5(Course _course);
+    void setCourse6(Course _course);
+
+
 };
 
 #endif

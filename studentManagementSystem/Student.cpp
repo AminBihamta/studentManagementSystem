@@ -80,6 +80,30 @@ void Student::setAA(AA _aa) {
     academicAdvisor = _aa;
 }
 
+void Student::setCourse1(Course _course) {
+    studentCourses[0] = _course;
+}
+
+void Student::setCourse2(Course _course) {
+    studentCourses[1] = _course;
+}
+
+void Student::setCourse3(Course _course) {
+    studentCourses[2] = _course;
+}
+
+void Student::setCourse4(Course _course) {
+    studentCourses[3] = _course;
+}
+
+void Student::setCourse5(Course _course) {
+    studentCourses[4] = _course;
+}
+
+void Student::setCourse6(Course _course) {
+    studentCourses[5] = _course;
+}
+
 std::string Student::getAAName() const {
     return academicAdvisor.getName();
 }

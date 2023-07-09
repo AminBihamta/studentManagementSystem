@@ -16,6 +16,3 @@ SECR1033
 Value and Identity
 ULRS1012
 
-Discrete Structure
-SECI1013
-

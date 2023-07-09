@@ -1395,7 +1395,6 @@ void deleteRecord(int recordIndex, vector<Student>& students) {
         students.erase(students.begin() + recordIndex);
     studentCount--;
     updateDatabase(students);
-    cout << endl << "Record successfully deleted!" << endl << endl;
 };
 
 void deleteRecord(int recordIndex, vector<Course>& courses) {
@@ -1408,7 +1407,6 @@ void deleteRecord(int recordIndex, vector<Course>& courses) {
         courses.erase(courses.begin() + recordIndex);
     courseCount--;
     updateDatabase(courses);
-    cout << endl << "Record successfully deleted!" << endl << endl;
 };
 
 void deleteRecord(int recordIndex, vector<AA>& academicAdvisors) {
@@ -1421,7 +1419,6 @@ void deleteRecord(int recordIndex, vector<AA>& academicAdvisors) {
         academicAdvisors.erase(academicAdvisors.begin() + recordIndex);
     aaCount--;
     updateDatabase(academicAdvisors);
-    cout << endl << "Record successfully deleted!" << endl << endl;
 };
 
 
@@ -1514,6 +1511,7 @@ L1:
             currentRecord = findRecord(students);
             printRecord(students[currentRecord]);
             deleteRecord(currentRecord, students);
+            break;
         case 2:
             currentRecord = findRecord(academicAdvisors);
             printRecord(academicAdvisors[currentRecord]);
@@ -1523,6 +1521,7 @@ L1:
             currentRecord = findRecord(courses);
             printRecord(courses[currentRecord]);
             deleteRecord(currentRecord, courses);
+            break;
         }
     }
 

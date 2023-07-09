@@ -21,7 +21,6 @@ Value and Identity
 ULRS1012
 4
 
-
 MD RAHETUL ISLAM TAIMON
 rahetultaimon1303@gmail.com
 TaimnonPhoneNumber
@@ -43,4 +42,51 @@ Computer Orgaanization and Architecture
 SECR1033
 Value and Identity
 ULRS1012
-4
+2
+
+Rifah Nanziba
+nanziba@graduate.utm.my
++60132193752
+A22MJ4006
+20010221
+Bangladeshi
+RifahPassportNumber
+2
+Dr. Zatul Alwani binti Shaffiei
+Programming Technique 2
+SECJ1023
+Software Engineering
+SECJ2203
+Computational Mathematics
+SECI1113
+Probability and Statistical Data Analysis
+SECI1143
+Computer Orgaanization and Architecture
+SECR1033
+Value and Identity
+ULRS1012
+3.56
+
+MEGAT ILHAN ARIF BIN REIZAL ARIF
+ilhan4r1f@gmail.com
++60146189682
+A22MJ5035
+20030104
+Malaysian
+IlhanPassportNumber
+2
+Prof. Madya Ts. Dr. Masitah Bt Ghazali
+Software Engineering
+SECJ2203
+Programming Technique 2
+SECJ1023
+Computational Mathematics
+SECI1113
+Probability and Statistical Data Analysis
+SECI1143
+Computer Orgaanization and Architecture
+SECR1033
+Value and Identity
+ULRS1012
+3.19
+

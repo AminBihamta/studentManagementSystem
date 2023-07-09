@@ -1,23 +1,17 @@
-Mohammad Amin Bihamta Toosi
-bihamta@gradaute.utm.my
-+60182425901
-A22MJ4004
-20020713
-Iranian
-AminPassportNumber
-2
-Prof. Madya Ts. Dr. Masitah Bt Ghazali
 Programming Technique 2
 SECJ1023
+
 Software Engineering
 SECJ2203
+
 Computational Mathematics
 SECI1113
+
 Probability and Statistical Data Analysis
 SECI1143
+
 Computer Orgaanization and Architecture
 SECR1033
+
 Value and Identity
 ULRS1012
-4
-

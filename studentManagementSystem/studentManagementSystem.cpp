@@ -10,11 +10,27 @@
 #include <iomanip>
 
 using namespace std;
+
 int maxCount = 100;
 int studentCount = 0;  
 int aaCount = 0;
 int courseCount = 0;
 int currentRecord = 0;
+
+void printSMS() {
+    system("cls");
+    std::cout << " ________  _____ ______   ________         " << std::endl;
+    std::cout << "|\\   ____\\|\\   _ \\  _   \\|\\   ____\\        " << std::endl;
+    std::cout << "\\ \\  \\___|\\ \\  \\\\\\__\\ \\  \\ \\  \\___|_       " << std::endl;
+    std::cout << " \\ \\_____  \\ \\  \\\\|__| \\  \\ \\_____  \\      " << std::endl;
+    std::cout << "  \\|____|\\  \\ \\  \\    \\ \\  \\|____|\\  \\     " << std::endl;
+    std::cout << "    ____\\_\\  \\ \\__\\    \\ \\__\\____\\_\\  \\    " << std::endl;
+    std::cout << "   |\\_________\\|__|     \\|__|\\_________\\   " << std::endl;
+    std::cout << "   \\|_________|             \\|_________|   " << std::endl;
+    std::cout << std::endl;
+
+}
+
 
 AA findAAByName(string aaName, vector<AA> academicAdvisors) {
     for (int j = 0; j < academicAdvisors.size(); j++) {
@@ -120,8 +136,13 @@ void readDatabase(vector<Course>& courses) {
 }
 
 Course findCourseByName(const vector<Course>& courses, const string& courseName) {
+
     for (int i = 0; i < courseCount; i++) {
-        if (courses[i].getCourseName() == courseName) {
+        string lowerCourseName;
+            for (char c : courses[i].getCourseName()) {
+                lowerCourseName += std::tolower(c);
+            }
+        if (lowerCourseName == courseName) {
             return courses[i];
         }
     }
@@ -281,7 +302,7 @@ L7:
         goto L7;
     }
 
-
+    
     std::cout << "Enter nationallity: ";
     std::cin >> nationality;
 
@@ -291,71 +312,229 @@ L7:
     std::cout << "Enter semester: ";
     std::cin >> semester;
 
-    std::cout << "Enter academic advisor: ";
-L0:
-    cin.ignore();
-    getline(std::cin, aa);
-
-    AA academicAdvisor = findAAByName(aa, academicAdvisors);
-
-    if (academicAdvisor.getName() == "NULL") {
-        cout << "Academic Advisor not found! please enter a valid acedmic advisor name from the database: ";
-        goto L0;
+L8:
+    std::cout << endl << "Choose an academic advisor academic advisor" << endl;
+    for (int i = 0; i < aaCount; i++)
+    {
+        cout << i + 1 << ". " << academicAdvisors[i].getName() << endl;
     }
+    cout << endl << "Your response: ";
+    int choice;
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > aaCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L8;
+    }
+
+    AA academicAdvisor = academicAdvisors[--choice];
+
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+
 L1:
-    cout << "Enter first course name: ";
-    getline(cin, _course1);
-    course1 = findCourseByName(courses, _course1);
-    if (course1.getCourseName() == "NULL") {
-        cout << "Course not found! ";
+    cout << endl << "Choose user's first course" << endl;
+    for (int i = 0; i < courseCount; i++)
+    {
+        cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+    }
+
+    cout << endl << "Your response: ";
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > courseCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         goto L1;
     }
+    course1 = courses[--choice];
 
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+    cout << "Choose user's first course: " << course1.getCourseName() << " | " << course1.getCourseCode() << endl;
 L2:
-    cout << "Enter second course name: ";
-    getline(cin, _course2);
-    course2 = findCourseByName(courses, _course2);
-    if (course2.getCourseName() == "NULL") {
-        cout << "Course not found! ";
+    cout << endl << "Choose user's second course" << endl;
+    for (int i = 0; i < courseCount; i++)
+    {
+        cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+    }
+
+    cout << endl << "Your response: ";
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > courseCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         goto L2;
     }
+    course2 = courses[--choice];
+
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+    cout << "Choose user's first course: " << course1.getCourseName() << " | " << course1.getCourseCode() << endl;
+    cout << "Choose user's second course: " << course2.getCourseName() << " | " << course2.getCourseCode() << endl;
 
 L3:
-    cout << "Enter third course name: ";
-    getline(cin, _course3);
-    course3 = findCourseByName(courses, _course3);
-    if (course3.getCourseName() == "NULL") {
-        cout << "Course not found! ";
+    cout << endl << "Choose user's third course" << endl;
+    for (int i = 0; i < courseCount; i++)
+    {
+        cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+    }
+
+    cout << endl << "Your response: ";
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > courseCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         goto L3;
     }
+    course3 = courses[--choice];
+
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+    cout << "Choose user's first course: " << course1.getCourseName() << " | " << course1.getCourseCode() << endl;
+    cout << "Choose user's second course: " << course2.getCourseName() << " | " << course2.getCourseCode() << endl;
+    cout << "Choose user's third course: " << course3.getCourseName() << " | " << course3.getCourseCode() << endl;
 
 L4:
-    cout << "Enter fourth course name: ";
-    getline(cin, _course4);
-    course4 = findCourseByName(courses, _course4);
-    if (course4.getCourseName() == "NULL") {
-        cout << "Course not found! ";
+    cout << endl << "Choose user's fourth course" << endl;
+    for (int i = 0; i < courseCount; i++)
+    {
+        cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+    }
+
+    cout << endl << "Your response: ";
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > courseCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         goto L4;
     }
+    course4 = courses[--choice];
+
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+    cout << "Choose user's first course: " << course1.getCourseName() << " | " << course1.getCourseCode() << endl;
+    cout << "Choose user's second course: " << course2.getCourseName() << " | " << course2.getCourseCode() << endl;
+    cout << "Choose user's third course: " << course3.getCourseName() << " | " << course3.getCourseCode() << endl;
+    cout << "Choose user's fourth course: " << course4.getCourseName() << " | " << course4.getCourseCode() << endl;
 
 L5:
-    cout << "Enter fifth course name: ";
-    getline(cin, _course5);
-    course5 = findCourseByName(courses, _course5);
-    if (course5.getCourseName() == "NULL") {
-        cout << "Course not found! ";
+    cout << endl << "Choose user's fifth course" << endl;
+    for (int i = 0; i < courseCount; i++)
+    {
+        cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
+    }
+
+    cout << endl << "Your response: ";
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > courseCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         goto L5;
     }
+    course5 = courses[--choice];
+
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+    cout << "Choose user's first course: " << course1.getCourseName() << " | " << course1.getCourseCode() << endl;
+    cout << "Choose user's second course: " << course2.getCourseName() << " | " << course2.getCourseCode() << endl;
+    cout << "Choose user's third course: " << course3.getCourseName() << " | " << course3.getCourseCode() << endl;
+    cout << "Choose user's fourth course: " << course4.getCourseName() << " | " << course4.getCourseCode() << endl;
+    cout << "Choose user's fifth course: " << course5.getCourseName() << " | " << course5.getCourseCode() << endl;
 
 L6:
-    cout << "Enter sixth course name: ";
-    getline(cin, _course6);
-    course6 = findCourseByName(courses, _course6);
-    if (course6.getCourseName() == "NULL") {
-        cout << "Course not found! ";
-        goto L6;
+    cout << endl << "Choose user's sixth course" << endl;
+    for (int i = 0; i < courseCount; i++)
+    {
+        cout << i + 1 << ". " << courses[i].getCourseName() << " | " << courses[i].getCourseCode() << endl;
     }
 
+    cout << endl << "Your response: ";
+
+    cin >> choice;
+    if (std::cin.fail() || choice < 1 || choice > courseCount) {
+        cout << endl << "Invalid input. ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        goto L6;
+    }
+    course6 = courses[--choice];
+
+    system("cls");
+    printSMS();
+    cout << "Enter name: " << name << endl;
+    cout << "Enter phone number: " << phoneNum << endl;
+    cout << "Enter matric number: " << matricNum << endl;
+    cout << "Enter date of birth (YYYYMMDD): " << dateOfBirth << endl;
+    cout << "Enter nationallity: " << nationality << endl;
+    cout << "Enter passport/id number: " << passNum << endl;
+    cout << "Enter semester: " << semester << endl;
+    cout << "Choose an academic advisor: " << academicAdvisor.getName() << endl;
+    cout << "Choose user's first course: " << course1.getCourseName() << " | " << course1.getCourseCode() << endl;
+    cout << "Choose user's second course: " << course2.getCourseName() << " | " << course2.getCourseCode() << endl;
+    cout << "Choose user's third course: " << course3.getCourseName() << " | " << course3.getCourseCode() << endl;
+    cout << "Choose user's fourth course: " << course4.getCourseName() << " | " << course4.getCourseCode() << endl;
+    cout << "Choose user's fifth course: " << course5.getCourseName() << " | " << course5.getCourseCode() << endl;
+    cout << "Choose user's sixth course: " << course6.getCourseName() << " | " << course6.getCourseCode() << endl;
 
     std::cout << "Enter CGPA: ";
     std::cin >> cgpa;
@@ -470,9 +649,22 @@ void addRecord(vector<Course> courses) {
 
     string name, code;
 
+L0:
     std::cout << "Enter course name: ";
     std::cin.ignore();
     std::getline(std::cin, name);
+    
+    string lowerName;
+
+    for (char c : name) {
+        lowerName += std::tolower(c);
+    }
+
+    Course courseFinderCourse = findCourseByName(courses, lowerName);
+    if (courseFinderCourse.getCourseName() != "NULL") {
+        cout << endl << "Course already exists! ";
+        goto  L0;
+    }
 
     std::cout << "Enter course code: ";
     std::cin >> code;
@@ -508,19 +700,6 @@ void addRecord(vector<Course> courses) {
     cout << endl << "Record Successfully Created!";
 }
 
-void printSMS() {
-    system("cls");
-    std::cout << " ________  _____ ______   ________         " << std::endl;
-    std::cout << "|\\   ____\\|\\   _ \\  _   \\|\\   ____\\        " << std::endl;
-    std::cout << "\\ \\  \\___|\\ \\  \\\\\\__\\ \\  \\ \\  \\___|_       " << std::endl;
-    std::cout << " \\ \\_____  \\ \\  \\\\|__| \\  \\ \\_____  \\      " << std::endl;
-    std::cout << "  \\|____|\\  \\ \\  \\    \\ \\  \\|____|\\  \\     " << std::endl;
-    std::cout << "    ____\\_\\  \\ \\__\\    \\ \\__\\____\\_\\  \\    " << std::endl;
-    std::cout << "   |\\_________\\|__|     \\|__|\\_________\\   " << std::endl;
-    std::cout << "   \\|_________|             \\|_________|   " << std::endl;
-    std::cout << std::endl;
-
-}
 
 void printRecord(int choice, vector<Student> students, vector<AA> aas, vector<Course> courses) {
     printSMS();

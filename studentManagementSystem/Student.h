@@ -62,8 +62,6 @@ public:
     void setCourse4(Course _course);
     void setCourse5(Course _course);
     void setCourse6(Course _course);
-
-
 };
 
 #endif
